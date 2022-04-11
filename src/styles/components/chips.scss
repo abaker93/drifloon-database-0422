@@ -26,3 +26,31 @@
   }
 
 }
+
+@mixin weaknessChips($type, $color) {
+
+  &.#{$type} {
+    padding: 5px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    color: $white;
+    display: grid;
+    grid-template-columns: auto;
+    row-gap: 5px;
+    align-items: center;
+    justify-items: center;
+    background-color: $color;
+
+    &::before {
+      display: block;
+      content: '';
+      height: 16px;
+      width: 16px;
+      background: url('../assets/#{$type}.svg') center/contain no-repeat;
+    }
+
+    &:last-child { margin-left: 10px; }
+
+  }
+
+}

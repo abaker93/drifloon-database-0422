@@ -167,6 +167,21 @@
 
 		}
 
+		#weakness {
+			margin: 30px 0;
+			display: grid;
+			grid-template-columns: repeat(9, min-content);
+			justify-content: space-between;
+			column-gap: 5px;
+
+			>div {
+				@each $s-type, $s-color in $single-types {
+					@include weaknessChips($type: #{$s-type}, $color: $s-color);
+				}
+			}
+
+		}
+
 	}
 
 }

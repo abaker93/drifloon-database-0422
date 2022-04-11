@@ -81,24 +81,91 @@ function Pokemon() {
                   type1={poke.fields.type1}
                   type2={poke.fields.type2}
                 />
-                <div className="normal">0</div>
-                <div className="fire">0</div>
-                <div className="water">0</div>
-                <div className="electric">0</div>
-                <div className="grass">0</div>
-                <div className="ice">0</div>
-                <div className="fighting">0</div>
-                <div className="poison">0</div>
-                <div className="ground">0</div>
-                <div className="flying">0</div>
-                <div className="psychic">0</div>
-                <div className="bug">0</div>
-                <div className="rock">0</div>
-                <div className="ghost">0</div>
-                <div className="dragon">0</div>
-                <div className="dark">0</div>
-                <div className="steel">0</div>
-                <div className="fairy">0</div>
+                <Weakness
+                  attType="fire"
+                  type1={poke.fields.type1}
+                  type2={poke.fields.type2}
+                />
+                <Weakness
+                  attType="water"
+                  type1={poke.fields.type1}
+                  type2={poke.fields.type2}
+                />
+                <Weakness
+                  attType="electric"
+                  type1={poke.fields.type1}
+                  type2={poke.fields.type2}
+                />
+                <Weakness
+                  attType="grass"
+                  type1={poke.fields.type1}
+                  type2={poke.fields.type2}
+                />
+                <Weakness
+                  attType="ice"
+                  type1={poke.fields.type1}
+                  type2={poke.fields.type2}
+                />
+                <Weakness
+                  attType="fighting"
+                  type1={poke.fields.type1}
+                  type2={poke.fields.type2}
+                />
+                <Weakness
+                  attType="poison"
+                  type1={poke.fields.type1}
+                  type2={poke.fields.type2}
+                />
+                <Weakness
+                  attType="ground"
+                  type1={poke.fields.type1}
+                  type2={poke.fields.type2}
+                />
+                <Weakness
+                  attType="flying"
+                  type1={poke.fields.type1}
+                  type2={poke.fields.type2}
+                />
+                <Weakness
+                  attType="psychic"
+                  type1={poke.fields.type1}
+                  type2={poke.fields.type2}
+                />
+                <Weakness
+                  attType="bug"
+                  type1={poke.fields.type1}
+                  type2={poke.fields.type2}
+                />
+                <Weakness
+                  attType="rock"
+                  type1={poke.fields.type1}
+                  type2={poke.fields.type2}
+                />
+                <Weakness
+                  attType="ghost"
+                  type1={poke.fields.type1}
+                  type2={poke.fields.type2}
+                />
+                <Weakness
+                  attType="dragon"
+                  type1={poke.fields.type1}
+                  type2={poke.fields.type2}
+                />
+                <Weakness
+                  attType="dark"
+                  type1={poke.fields.type1}
+                  type2={poke.fields.type2}
+                />
+                <Weakness
+                  attType="steel"
+                  type1={poke.fields.type1}
+                  type2={poke.fields.type2}
+                />
+                <Weakness
+                  attType="fairy"
+                  type1={poke.fields.type1}
+                  type2={poke.fields.type2}
+                />
               </div>
               <div id="abilities">
                 <div className="abilities">{poke.fields.abilities}</div>
