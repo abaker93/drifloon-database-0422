@@ -5,17 +5,42 @@
 #pokemon {
 
 	>div {
+
 		@each $type1, $types2 in $types {
-			&.#{$type1} {
+			&[data-type-one="#{$type1}"] {
 				@each $type2, $grad in $types2 {
-					&.#{$type2} {
-						#pokemonHeader, #stats .statBarFill {
-							background: $grad;
-						}
+					&[data-type-two="#{$type2}"] {
+						#pokemonHeader { background: $grad; }
+						#stats .statBarFill { background: $grad; }
 					}
 				}
 			}
 		}
+
+		@each $s-type, $color in $single-types {
+			&[data-type-one="#{$s-type}"] {
+				#stats .statsNav {
+					button {
+						&.active {
+							border-color: $color;
+							background-color: $color;
+							color: $white;
+						}
+						&:hover, :focus {
+							border-color: $color;
+							color: $color;
+							background-color: $white;
+						}
+					}
+					.infoIcon {
+						color: $color;
+						font-size: 16px;
+					}
+				}
+			}
+
+		}
+
 	}
 	
 	#pokemonHeader {
@@ -104,11 +129,18 @@
 		}
 
 		#stats {
-			margin-top: 20px;
+			margin: 30px 0;
 
 			.stat {
 				display: grid;
-				grid-template-columns: 30px auto;
+				grid-template-columns: 50px 20px auto;
+				column-gap: 10px;
+				margin: 5px 0;
+				align-items: center;
+
+				.statLabel { text-align: right; }
+
+				.statNum { text-align: center; }
 			
 				.statBar {
 					width: 100%;
@@ -123,6 +155,14 @@
 					
 				}
 			
+			}
+
+			.statsNav {
+				margin-top: 10px;
+				display: grid;
+				grid-template-columns: repeat(4, max-content);
+				column-gap: 5px;
+				align-items: center;
 			}
 
 		}

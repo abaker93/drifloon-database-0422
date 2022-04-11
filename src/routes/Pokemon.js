@@ -1,8 +1,11 @@
 import React from "react";
 import { PokemonNav } from "../components/Navigation";
+import { Statbar } from "../components/Statbar";
+import { Weakness } from "../components/Weakness";
 import { useParams } from "react-router-dom";
 import { GetPokemon } from "../utilities";
 import InfoRoundedIcon from "@mui/icons-material/InfoRounded";
+import Tooltip from "@mui/material/Tooltip";
 
 function Pokemon() {
   let params = useParams();
@@ -17,20 +20,6 @@ function Pokemon() {
     return num;
   };
 
-  const stats = (stat, num) => {
-    return (
-      <div className={`stat ${stat}`}>
-        <div className="statNum">{num}</div>
-        <div className="statBar">
-          <div
-            className="statBarFill"
-            style={{ width: `calc((${num} / 252) * 100%)` }}
-          />
-        </div>
-      </div>
-    );
-  };
-
   return (
     <>
       <PokemonNav />
@@ -38,12 +27,10 @@ function Pokemon() {
         {pokemon.map((poke) => (
           <div
             key={poke.id}
-            className={`${poke.fields.type1}1 ${poke.fields.type2}2`}
+            data-type-one={poke.fields.type1}
+            data-type-two={poke.fields.type2}
           >
-            <div
-              id="pokemonHeader"
-              className={`${poke.fields.type1}1 ${poke.fields.type2}2`}
-            >
+            <div id="pokemonHeader">
               <span className="japanese">{poke.fields.japaneseKata}</span>
               <img
                 className="artwork"
@@ -65,24 +52,35 @@ function Pokemon() {
                 <div className={poke.fields.type2}>{poke.fields.type2}</div>
               </div>
               <div id="stats">
-                {stats("hp", poke.fields.hp)}
-                {stats("att", poke.fields.att)}
-                {stats("def", poke.fields.def)}
-                {stats("spAtt", poke.fields.spAtt)}
-                {stats("spDef", poke.fields.spDef)}
-                {stats("spd", poke.fields.spd)}
+                <Statbar stat="hp" label="HP" num={poke.fields.hp} />
+                <Statbar stat="att" label="Attack" num={poke.fields.att} />
+                <Statbar stat="def" label="Defense" num={poke.fields.def} />
+                <Statbar stat="spAtt" label="Sp. Att" num={poke.fields.spAtt} />
+                <Statbar stat="spDef" label="Sp. Def" num={poke.fields.spDef} />
+                <Statbar stat="spd" label="Speed" num={poke.fields.spd} />
 
                 <div className="statsNav">
-                  <button className="base">Base</button>
+                  <button className="base active">Base</button>
                   <button className="lvl50">LVL 50</button>
                   <button className="lvl100">LVL 100</button>
-                  <InfoRoundedIcon />
+                  <Tooltip
+                    title="Minimum stats are calculated with 0 EVs, IVs of 0, and (if applicable) a hindering nature. Maximum stats are calculated with 252 EVs, IVs of 31, and (if applicable) a helpful nature."
+                    placement="top"
+                    arrow
+                  >
+                    <InfoRoundedIcon className="infoIcon" />
+                  </Tooltip>
                 </div>
               </div>
               <div id="evolution">
                 <h2>Evolution</h2>
               </div>
               <div id="weakness">
+                <Weakness
+                  attType="normal"
+                  type1={poke.fields.type1}
+                  type2={poke.fields.type2}
+                />
                 <div className="normal">0</div>
                 <div className="fire">0</div>
                 <div className="water">0</div>
