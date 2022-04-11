@@ -17,21 +17,39 @@ function Pokemon() {
     return num;
   };
 
+  const stats = (stat, num) => {
+    return (
+      <div className={`stat ${stat}`}>
+        <div className="statNum">{num}</div>
+        <div className="statBar">
+          <div
+            className="statBarFill"
+            style={{ width: `calc((${num} / 252) * 100%)` }}
+          />
+        </div>
+      </div>
+    );
+  };
+
   return (
     <>
       <PokemonNav />
       <div id="pokemon">
         {pokemon.map((poke) => (
-          <div key={poke.id}>
-            <div id="pokemonHeader" className={poke.fields.type1}>
-              <div className={poke.fields.type2}>
-                <span className="japanese">{poke.fields.japaneseKata}</span>
-                <img
-                  className="artwork"
-                  src={poke.fields.artwork[0].url}
-                  alt={poke.fields.name}
-                />
-              </div>
+          <div
+            key={poke.id}
+            className={`${poke.fields.type1}1 ${poke.fields.type2}2`}
+          >
+            <div
+              id="pokemonHeader"
+              className={`${poke.fields.type1}1 ${poke.fields.type2}2`}
+            >
+              <span className="japanese">{poke.fields.japaneseKata}</span>
+              <img
+                className="artwork"
+                src={poke.fields.artwork[0].url}
+                alt={poke.fields.name}
+              />
             </div>
             <div id="pokemonDetails">
               <h1>
@@ -47,12 +65,13 @@ function Pokemon() {
                 <div className={poke.fields.type2}>{poke.fields.type2}</div>
               </div>
               <div id="stats">
-                <div className="hp">{poke.fields.hp}</div>
-                <div className="att">{poke.fields.att}</div>
-                <div className="def">{poke.fields.def}</div>
-                <div className="spAtt">{poke.fields.spAtt}</div>
-                <div className="spDef">{poke.fields.spDef}</div>
-                <div className="Spd">{poke.fields.spd}</div>
+                {stats("hp", poke.fields.hp)}
+                {stats("att", poke.fields.att)}
+                {stats("def", poke.fields.def)}
+                {stats("spAtt", poke.fields.spAtt)}
+                {stats("spDef", poke.fields.spDef)}
+                {stats("spd", poke.fields.spd)}
+
                 <div className="statsNav">
                   <button className="base">Base</button>
                   <button className="lvl50">LVL 50</button>
