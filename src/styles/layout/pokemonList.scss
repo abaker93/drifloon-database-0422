@@ -1,0 +1,157 @@
+@import '../utilities/variables/variables';
+@import '../utilities/variables/gradients';
+@import '../utilities/mixins';
+
+#pokemonList {
+	margin: 30px;
+
+	h1 {
+		font-size: 24px;
+		margin-bottom: 30px;
+	}
+
+	.searchBar {
+		background-color: #F1F1F1;
+		padding: 15px 20px;
+		border-radius: 10px;
+		display: grid;
+		grid-template-columns: 20px auto;
+		grid-column-gap: 10px;
+
+		input {
+			border: none;
+			outline: none;
+			width: 100%;
+			font-size: 12px;
+			color: $text;
+			background: transparent;
+	
+			&::placeholder {
+				color: #AAAAAA;
+				font-size: 10px;
+			}
+	
+		}
+
+	}
+	
+
+	.pokedexCard {
+
+		>div {
+			margin: 30px 0 15px;
+			border-radius: 10px;
+			color: $white;
+			box-shadow: 0px 59px 24px rgba(89, 89, 89, 0.03),
+				0px 33px 20px rgba(89, 89, 89, 0.1),
+				0px 15px 15px rgba(89, 89, 89, 0.17),
+				0px 4px 8px rgba(89, 89, 89, 0.2),
+				0px 0px 0px rgba(89, 89, 89, 0.2);
+	
+			>div {
+				display: grid;
+				grid-template-columns: 100px auto;
+				padding: 7px;
+				border-radius: 10px;
+			}
+
+			@each $type1, $types2 in $types {
+				&.#{$type1} {
+					@each $type2, $grad in $types2 {
+						>.#{$type2} & {
+							background: $grad;
+						}
+					}
+				}
+			}
+	
+		}
+	
+		img {
+			max-width: 100%;
+			position: relative;
+			top: -20px;
+		}
+	
+		.details {
+			padding: 7px 15px;
+	
+			h3 {
+				font-size: 20px;
+	
+				span {
+					font-size: 11px;
+					font-weight: 400;
+					color: rgba(255, 255, 255, 0.6);
+					font-feature-settings: 'tnum' on, 'lnum' on;
+	
+					span {
+						font-size: 7px;
+						text-transform: uppercase;
+						font-weight: 700;
+						padding-right: 1px;
+					}
+	
+				}
+	
+			}
+	
+			.type {
+				display: grid;
+				grid-template-columns: repeat(2, min-content);
+				grid-column-gap: 5px;
+	
+				div {
+					padding: 2px 5px;
+					background-color: transparent;
+					margin: 7px 0;
+					text-transform: uppercase;
+					font-size: 10px;
+					border-radius: 50px;
+					color: $white;
+	
+					&.grass { background-color: $grass; }
+					&.bug { background-color: $bug; }
+					&.dark { background-color: $dark; }
+					&.dragon { background-color: $dragon; }
+					&.electric { background-color: $electric; }
+					&.fairy { background-color: $fairy; }
+					&.fighting { background-color: $fighting; }
+					&.fire { background-color: $fire; }
+					&.flying { background-color: $flying; }
+					&.ghost { background-color: $ghost; }
+					&.grass { background-color: $grass; }
+					&.ground { background-color: $ground; }
+					&.ice { background-color: $ice; }
+					&.normal { background-color: $normal; }
+					&.poison { background-color: $poison; }
+					&.psychic { background-color: $psychic; }
+					&.rock { background-color: $rock; }
+					&.steel { background-color: $steel; }
+					&.water { background-color: $water; }
+				}
+				
+			}
+	
+			.stats {
+				display: grid;
+				grid-template-columns: repeat(7, auto);
+				font-size: 0.75rem;
+				text-align: center;
+	
+				h6 {
+					font-size: 0.6rem;
+					margin-bottom: 0.175rem;
+					color: rgba(255, 255, 255, 0.6);
+					text-transform: uppercase;
+				}
+	
+				.total { font-weight: 700 }
+			}
+	
+		}
+	
+	}
+
+}
+

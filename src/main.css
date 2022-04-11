@@ -1,0 +1,336 @@
+@import url("https://use.typekit.net/fbk7wmd.css");
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+code,
+em,
+img,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+b,
+u,
+i,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+main,
+canvas,
+embed,
+footer,
+header,
+nav,
+section,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  text-size-adjust: none;
+}
+
+footer,
+header,
+nav,
+section,
+main {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+body,
+html {
+  font-family: darkmode-off, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 15px;
+  color: #444444;
+}
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6,
+html h1,
+html h2,
+html h3,
+html h4,
+html h5,
+html h6 {
+  font-weight: 700;
+}
+body a,
+html a {
+  text-decoration: none;
+  color: #000;
+}
+body a :hover,
+html a :hover {
+  color: orange;
+}
+body h1,
+html h1 {
+  font-size: 50px;
+}
+
+.japanese {
+  font-family: source-han-sans-japanese, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+nav {
+  margin-bottom: 30px;
+}
+
+.pokedexList {
+  display: grid;
+  grid-template-columns: 100px auto;
+  margin: 2rem 0.75rem 1rem;
+  padding: 0.5rem;
+  border-radius: 0.675rem;
+  color: #ffffff;
+  box-shadow: 0px 0px 0px 0px hsla(0deg, 0%, 35%, 0.1),
+    0px 4px 8px 0px hsla(0deg, 0%, 35%, 0.1),
+    0px 14px 14px 0px hsla(0deg, 0%, 35%, 0.09),
+    0px 32px 19px 0px hsla(0deg, 0%, 35%, 0.05),
+    0px 56px 23px 0px hsla(0deg, 0%, 35%, 0.01),
+    0px 88px 25px 0px hsla(0deg, 0%, 35%, 0);
+}
+.pokedexList.grass {
+  background: hsl(115deg, 41%, 55%);
+}
+.pokedexList.bug {
+  background: hsl(79deg, 63%, 46%);
+}
+.pokedexList.dark {
+  background: hsl(263deg, 10%, 36%);
+}
+.pokedexList.dragon {
+  background: hsl(208deg, 90%, 40%);
+}
+.pokedexList.electric {
+  background: hsl(49deg, 88%, 59%);
+}
+.pokedexList.fairy {
+  background: hsl(302deg, 69%, 75%);
+}
+.pokedexList.fighting {
+  background: hsl(342deg, 60%, 53%);
+}
+.pokedexList.fire {
+  background: hsl(26deg, 98%, 65%);
+}
+.pokedexList.flying {
+  background: hsl(221deg, 52%, 72%);
+}
+.pokedexList.ghost {
+  background: hsl(225deg, 36%, 50%);
+}
+.pokedexList.grass {
+  background: hsl(115deg, 41%, 55%);
+}
+.pokedexList.ground {
+  background: hsl(20deg, 67%, 57%);
+}
+.pokedexList.ice {
+  background: hsl(170deg, 48%, 63%);
+}
+.pokedexList.normal {
+  background: hsl(208deg, 9%, 60%);
+}
+.pokedexList.poison {
+  background: hsl(281deg, 46%, 60%);
+}
+.pokedexList.psychic {
+  background: hsl(357deg, 93%, 71%);
+}
+.pokedexList.rock {
+  background: hsl(42deg, 36%, 66%);
+}
+.pokedexList.steel {
+  background: hsl(195deg, 28%, 49%);
+}
+.pokedexList.water {
+  background: hsl(211deg, 63%, 57%);
+}
+.pokedexList .img {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.pokedexList .details {
+  padding: 0.5rem 1rem;
+}
+.pokedexList .details h3 {
+  font-size: 1.3rem;
+}
+.pokedexList .details h3 span {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+}
+.pokedexList .details h3 span span {
+  font-size: 0.45rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding-right: 0.15rem;
+}
+.pokedexList .details .type {
+  display: grid;
+  grid-template-columns: repeat(2, min-content);
+  grid-column-gap: 0.25rem;
+}
+.pokedexList .details .type div {
+  padding: 0.15rem 0.5rem 0.2rem;
+  background-color: transparent;
+  margin: 0.5rem 0;
+  text-transform: uppercase;
+  font-size: 0.65rem;
+  border-radius: 50rem;
+  color: #ffffff;
+}
+.pokedexList .details .type div.grass {
+  background-color: hsl(115deg, 41%, 55%);
+}
+.pokedexList .details .type div.bug {
+  background-color: hsl(79deg, 63%, 46%);
+}
+.pokedexList .details .type div.dark {
+  background-color: hsl(263deg, 10%, 36%);
+}
+.pokedexList .details .type div.dragon {
+  background-color: hsl(208deg, 90%, 40%);
+}
+.pokedexList .details .type div.electric {
+  background-color: hsl(49deg, 88%, 59%);
+}
+.pokedexList .details .type div.fairy {
+  background-color: hsl(302deg, 69%, 75%);
+}
+.pokedexList .details .type div.fighting {
+  background-color: hsl(342deg, 60%, 53%);
+}
+.pokedexList .details .type div.fire {
+  background-color: hsl(26deg, 98%, 65%);
+}
+.pokedexList .details .type div.flying {
+  background-color: hsl(221deg, 52%, 72%);
+}
+.pokedexList .details .type div.ghost {
+  background-color: hsl(225deg, 36%, 50%);
+}
+.pokedexList .details .type div.grass {
+  background-color: hsl(115deg, 41%, 55%);
+}
+.pokedexList .details .type div.ground {
+  background-color: hsl(20deg, 67%, 57%);
+}
+.pokedexList .details .type div.ice {
+  background-color: hsl(170deg, 48%, 63%);
+}
+.pokedexList .details .type div.normal {
+  background-color: hsl(208deg, 9%, 60%);
+}
+.pokedexList .details .type div.poison {
+  background-color: hsl(281deg, 46%, 60%);
+}
+.pokedexList .details .type div.psychic {
+  background-color: hsl(357deg, 93%, 71%);
+}
+.pokedexList .details .type div.rock {
+  background-color: hsl(42deg, 36%, 66%);
+}
+.pokedexList .details .type div.steel {
+  background-color: hsl(195deg, 28%, 49%);
+}
+.pokedexList .details .type div.water {
+  background-color: hsl(211deg, 63%, 57%);
+}
+.pokedexList .details .stats {
+  display: grid;
+  grid-template-columns: repeat(7, auto);
+  font-size: 0.75rem;
+  text-align: center;
+}
+.pokedexList .details .stats h6 {
+  font-size: 0.6rem;
+  margin-bottom: 0.175rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+}
+.pokedexList .details .stats .total {
+  font-weight: 700;
+}
+
+/*# sourceMappingURL=main.css.map */

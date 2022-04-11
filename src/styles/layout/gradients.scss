@@ -1,0 +1,43 @@
+@import '../utilities/mixins';
+@import '../utilities/variables/gradients';
+
+.gradientTest {
+  margin: 0 30px 0;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  column-gap: 30px;
+  row-gap: 30px;
+
+  h1 {
+    margin: 15px 0;
+    font-size: 24px;
+    grid-column: 1 / 7;
+  }
+
+  h2 {
+    margin: 15px 0;
+    font-size: 18px;
+  }
+
+  .gradientBox {
+    >div {
+      padding: 20px;
+      color: #E5E5E5;
+      margin: 15px 0;
+      border-radius: 10px;
+      height: 70px;
+    }
+
+    @each $type1, $types2 in $types {
+      &.#{$type1} {
+        @each $type2, $grad in $types2 {
+          >.#{$type2} {
+            background: $grad;
+          }
+        }
+      }
+    }
+  
+  }
+
+}

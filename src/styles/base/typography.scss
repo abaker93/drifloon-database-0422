@@ -1,0 +1,31 @@
+@import url("https://use.typekit.net/fbk7wmd.css");
+@import '../utilities/variables/variables';
+@import '../utilities/mixins';
+
+// body, html, h1, h2, h3, h4, h5, h6, a, p, ul, li {
+// 	@include text-crop($line-height:1);
+// }
+
+body, html {
+	font-family: source-sans-3, sans-serif;
+	font-weight: 300;
+	font-style: normal;
+	font-size: 15px;
+	color: $text;
+
+	h1, h2, h3, h4, h5, h6 {
+		font-weight: 600;
+	}
+
+	a {
+		text-decoration: none;
+		color: $text;
+	}
+
+}
+
+.japanese {
+	font-family: source-han-sans-japanese, sans-serif;
+	font-weight: 900;
+	font-style: normal;
+}

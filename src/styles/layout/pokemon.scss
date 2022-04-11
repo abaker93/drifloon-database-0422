@@ -1,0 +1,196 @@
+@import '../utilities/variables/gradients';
+@import '../utilities/variables/variables';
+
+#pokemon {
+	
+	#pokemonHeader {
+
+		>div {
+			padding-top: 80px;
+			// background: $grad-ghost-flying;
+			text-align: center;
+			display: grid;
+			overflow: hidden;
+			justify-items: center;
+			height: 300px;
+			position: relative;
+
+			&:after {
+				content: '';
+				background-image: url('/assets/border.svg');
+				height: 75px;
+				width: 100%;
+				bottom: 0;
+				position: absolute;
+			}
+			
+		}
+
+		@each $type1, $types2 in $types {
+			&.#{$type1} {
+				@each $type2, $grad in $types2 {
+					>.#{$type2} {
+						background: $grad;
+					}
+				}
+			}
+		}
+
+		.japanese {
+			overflow: visible;
+			font-size: 70px;
+			white-space: nowrap;
+			opacity: 70%;
+			mix-blend-mode: overlay;
+			top: 120px;
+			position: absolute;
+		}
+
+		img.artwork {
+			height: 200px;
+			width: 200px;
+			position: absolute;
+			top: 85px;
+			z-index: 100;
+		}
+
+	}
+
+	#pokemonDetails {
+		padding: 0 30px;
+
+		h1 {
+			font-size: 25px;
+			text-align: center;
+			margin-top: 20px;
+			margin-bottom: 5px;
+	
+			>span {
+				font-size: 14px;
+				margin-right: 3px;
+				color: $text-medgray;
+				font-weight: 400;
+	
+				>span {
+					font-size: 9px;
+					text-transform: uppercase;
+					margin-right: 2px;
+				}
+	
+			}
+	
+		}
+	
+		.category {
+			font-size: 18px;
+			color: $text-medgray;
+			font-style: italic;
+			text-align: center;
+		}
+	
+		.types {
+			display: grid;
+			grid-template-columns: repeat(2, min-content);
+			justify-content: center;
+			margin-top: 20px;
+	
+			>div {
+				text-transform: uppercase;
+				padding: 5px 15px;
+				border-radius: 50px;
+				color: $white;
+				display: grid;
+				grid-template-columns: repeat(2, auto);
+				column-gap: 5px;
+				align-items: center;
+	
+				&:not(:last-child) { margin-right: 10px; }
+	
+				&::before {
+					display: block;
+					content: '';
+					height: 16px;
+					width: 16px;
+					background: center/contain no-repeat;
+				}
+
+				&.bug {
+					background-color: $bug;
+					&::before { background-image: url('../assets/bug.svg'); }
+				}
+				&.dark {
+					background-color: $dark;
+					&::before { background-image: url('../assets/dark.svg'); }
+				}
+				&.dragon {
+					background-color: $dragon;
+					&::before { background-image: url('../assets/dragon.svg'); }
+				}
+				&.electric {
+					background-color: $electric;
+					&::before { background-image: url('../assets/electric.svg'); }
+				}
+				&.fairy {
+					background-color: $fairy;
+					&::before { background-image: url('../assets/fairy.svg'); }
+				}
+				&.fighting {
+					background-color: $fighting;
+					&::before { background-image: url('../assets/fighting.svg'); }
+				}
+				&.fire {
+					background-color: $fire;
+					&::before { background-image: url('../assets/fire.svg'); }
+				}
+				&.flying {
+					background-color: $flying;
+					&::before { background-image: url('../assets/flying.svg'); }
+				}
+				&.ghost {
+					background-color: $ghost;
+					&::before { background-image: url('../assets/ghost.svg'); }
+				}
+				&.grass {
+					background-color: $grass;
+					&::before { background-image: url('../assets/grass.svg'); }
+				}
+				&.ground {
+					background-color: $ground;
+					&::before { background-image: url('../assets/ground.svg'); }
+				}
+				&.ice {
+					background-color: $ice;
+					&::before { background-image: url('../assets/ice.svg'); }
+				}
+				&.normal {
+					background-color: $normal;
+					&::before { background-image: url('../assets/normal.svg'); }
+				}
+				&.poison {
+					background-color: $poison;
+					&::before { background-image: url('../assets/poison.svg'); }
+				}
+				&.psychic {
+					background-color: $psychic;
+					&::before { background-image: url('../assets/psychic.svg'); }
+				}
+				&.rock {
+					background-color: $rock;
+					&::before { background-image: url('../assets/rock.svg'); }
+				}
+				&.steel {
+					background-color: $steel;
+					&::before { background-image: url('../assets/steel.svg'); }
+				}
+				&.water {
+					background-color: $water;
+					&::before { background-image: url('../assets/water.svg'); }
+				}
+	
+			}
+	
+		}
+
+	}
+
+}
