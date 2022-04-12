@@ -18,7 +18,7 @@
       content: '';
       height: 16px;
       width: 16px;
-      background: url('../assets/#{$type}.svg') center/contain no-repeat;
+      background: url('/assets/#{$type}.svg') center/contain no-repeat;
     }
 
     &:last-child { margin-left: 10px; }
@@ -46,10 +46,10 @@
       content: '';
       height: 16px;
       width: 16px;
-      background: url('../assets/#{$type}.svg') center/contain no-repeat;
+      background: url('/assets/#{$type}.svg') center/contain no-repeat;
     }
 
-    &:last-child { margin-left: 10px; }
+    // &:last-child { margin-left: 10px; }
 
   }
 

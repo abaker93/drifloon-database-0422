@@ -34,7 +34,6 @@
 		}
 
 	}
-	
 
 	.pokedexCard {
 
@@ -53,9 +52,9 @@
 			border-radius: 10px;
 
 			@each $type1, $types2 in $types {
-				&.#{$type1} {
+				&[data-type-one="#{$type1}"] {
 					@each $type2, $grad in $types2 {
-						&.#{$type2} {
+						&[data-type-two="#{$type2}"] {
 							background: $grad;
 						}
 					}

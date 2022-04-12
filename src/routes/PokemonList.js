@@ -1,31 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { GetAllPokemon } from "../utilities";
+import { GetAllPokemon, url, nationalDex } from "../utilities";
 import { PokemonListNav } from "../components/Navigation";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 
 function PokemonList() {
   const pokemon = GetAllPokemon();
-
-  const url = (national, alt) => {
-    national = String(national);
-    while (national.length < 3) national = "0" + national;
-
-    if (alt > 0) {
-      alt = String(alt);
-      while (alt.length < 2) alt = "0" + alt;
-
-      return national + "/" + alt;
-    } else {
-      return national;
-    }
-  };
-
-  const nationalDex = (num) => {
-    num = String(num);
-    while (num.length < 3) num = "0" + num;
-    return num;
-  };
 
   const sumStats = (num1, num2, num3, num4, num5, num6) => {
     return num1 + num2 + num3 + num4 + num5 + num6;
@@ -43,10 +23,16 @@ function PokemonList() {
         {pokemon.map((poke) => (
           <Link
             className="pokedexCard"
-            to={`/pokemon/${url(poke.fields.national, poke.fields.altNum)}`}
+            to={`/pokedex/national/${url(
+              poke.fields.national,
+              poke.fields.altNum
+            )}`}
             key={poke.id}
           >
-            <div className={`${poke.fields.type1}1 ${poke.fields.type2}2`}>
+            <div
+              data-type-one={poke.fields.type1}
+              data-type-two={poke.fields.type2}
+            >
               <img src={poke.fields.artwork[0].url} alt={poke.fields.name} />
               <div className="details">
                 <h3>

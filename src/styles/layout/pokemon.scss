@@ -37,6 +37,10 @@
 						font-size: 16px;
 					}
 				}
+				#name .nameOrigin h6 {
+					background-color: $color !important;
+					color: $white;
+				}
 			}
 
 		}
@@ -170,14 +174,42 @@
 		#weakness {
 			margin: 30px 0;
 			display: grid;
-			grid-template-columns: repeat(9, min-content);
+			grid-template-columns: repeat(9, 27px);
 			justify-content: space-between;
-			column-gap: 5px;
+			row-gap: 10px;
 
 			>div {
+				font-size: 12px;
+				font-weight: 700;
+
 				@each $s-type, $s-color in $single-types {
 					@include weaknessChips($type: #{$s-type}, $color: $s-color);
 				}
+
+			}
+
+		}
+
+		#name {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			margin-top: 30px;
+			row-gap: 15px;
+
+			h6 {
+				text-transform: uppercase;
+				font-size: 12px;
+				font-weight: 300;
+				letter-spacing: 0.1em;
+				margin-bottom: 3px;
+				background-color: #DDDDDD;
+				border-radius: 50px;
+				width: max-content;
+				padding: 5px 14px;
+			}
+
+			.nameOrigin {
+				grid-column: 1 / 4;				
 			}
 
 		}

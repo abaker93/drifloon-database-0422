@@ -174,12 +174,30 @@ function Pokemon() {
                 </div>
               </div>
               <div id="name">
-                <div className="english">{poke.fields.english}</div>
-                <div className="spanish">{poke.fields.spanish}</div>
-                <div className="italian">{poke.fields.italian}</div>
-                <div className="japanese">{`${poke.fields.japaneseKata} (${poke.fields.japaneseLat})`}</div>
-                <div className="german">{poke.fields.german}</div>
-                <div className="nameOrigin">{poke.fields.nameOrigin}</div>
+                <div className="english">
+                  <h6>English</h6>
+                  <p>{poke.fields.english}</p>
+                </div>
+                <div className="spanish">
+                  <h6>Spanish</h6>
+                  <p>{poke.fields.spanish}</p>
+                </div>
+                <div className="italian">
+                  <h6>Italian</h6>
+                  <p>{poke.fields.italian}</p>
+                </div>
+                <div className="japaneseName">
+                  <h6>Japanese</h6>
+                  <p>{`${poke.fields.japaneseKata} (${poke.fields.japaneseLat})`}</p>
+                </div>
+                <div className="german">
+                  <h6>German</h6>
+                  <p>{poke.fields.german}</p>
+                </div>
+                <div className="nameOrigin">
+                  <h6>Name Origin</h6>
+                  <p>{poke.fields.nameOrigin}</p>
+                </div>
               </div>
             </div>
           </div>

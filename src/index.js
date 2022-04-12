@@ -14,7 +14,7 @@ ReactDOM.render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Home />} />
-          <Route path="pokemon">
+          <Route path="pokedex/national">
             <Route index element={<PokemonList />} />
             <Route path=":pokedexId">
               <Route index element={<Pokemon />} />

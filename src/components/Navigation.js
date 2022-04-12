@@ -21,10 +21,10 @@ export const PokemonListNav = () => {
   return (
     <nav className="pokemonListNav">
       <div className="navRight">
-        <Link to="/pokemon">
+        <Link to="/pokedex/national">
           <FilterListRounded className="navIcon" />
         </Link>
-        <Link to="/pokemon">
+        <Link to="/pokedex/national">
           <SortRounded className="navIcon" />
         </Link>
         <Link to="/">
@@ -39,7 +39,7 @@ export const PokemonNav = () => {
   return (
     <nav className="pokemonNav">
       <div className="navLeft">
-        <Link to="/pokemon">
+        <Link to="/pokedex/national">
           <ArrowBackIosNewRoundedIcon className="navIcon" />
         </Link>
       </div>
