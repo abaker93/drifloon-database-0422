@@ -1,21 +1,12 @@
+@import '../components/chips';
+@import '../utilities/mixins';
 @import '../utilities/variables/gradients';
 @import '../utilities/variables/variables';
-@import '../components/chips';
 
 #pokemon {
 
 	>div {
-
-		@each $type1, $types2 in $types {
-			&[data-type-one="#{$type1}"] {
-				@each $type2, $grad in $types2 {
-					&[data-type-two="#{$type2}"] {
-						#pokemonHeader { background: $grad; }
-						#stats .statBarFill { background: $grad; }
-					}
-				}
-			}
-		}
+		@include gradientBackground;
 
 		@each $s-type, $color in $single-types {
 			&[data-type-one="#{$s-type}"] {

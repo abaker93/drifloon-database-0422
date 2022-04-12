@@ -345,6 +345,7 @@ $grad-water-water:			(linear-gradient(30deg, $water 0%, $water 100%));
 
 $types: (
 	'bug': (
+		'': ($grad-bug-bug),
 		'undefined': ($grad-bug-bug),
 		'dark': ($grad-bug-dark),
 		'dragon': ($grad-bug-dragon),
@@ -365,6 +366,7 @@ $types: (
 		'water': ($grad-bug-water)
 	),
 	'dark': (
+		'': ($grad-dark-dark),
 		'undefined': ($grad-dark-dark),
 		'bug': ($grad-dark-bug),
 		'dragon': ($grad-dark-dragon),
@@ -385,6 +387,7 @@ $types: (
 		'water': ($grad-dark-water)
 	),
 	'dragon': (
+		'': ($grad-dragon-dragon),
 		'undefined': ($grad-dragon-dragon),
 		'bug': ($grad-dragon-bug),
 		'dark': ($grad-dragon-dark),
@@ -405,6 +408,7 @@ $types: (
 		'water': ($grad-dragon-water)
 	),
 	'electric': (
+		'': ($grad-electric-electric),
 		'undefined': ($grad-electric-electric),
 		'bug': ($grad-electric-bug),
 		'dark': ($grad-electric-dark),
@@ -425,6 +429,7 @@ $types: (
 		'water': ($grad-electric-water)
 	),
 	'fairy': (
+		'': ($grad-fairy-fairy),
 		'undefined': ($grad-fairy-fairy),
 		'bug': ($grad-fairy-bug),
 		'dark': ($grad-fairy-dark),
@@ -445,6 +450,7 @@ $types: (
 		'water': ($grad-fairy-water)
 	),
 	'fighting': (
+		'': ($grad-fighting-fighting),
 		'undefined': ($grad-fighting-fighting),
 		'bug': ($grad-fighting-bug),
 		'dark': ($grad-fighting-dark),
@@ -465,6 +471,7 @@ $types: (
 		'water': ($grad-fighting-water)
 	),
 	'fire': (
+		'': ($grad-fire-fire),
 		'undefined': ($grad-fire-fire),
 		'bug': ($grad-fire-bug),
 		'dark': ($grad-fire-dark),
@@ -485,6 +492,7 @@ $types: (
 		'water': ($grad-fire-water)
 	),
 	'flying': (
+		'': ($grad-flying-flying),
 		'undefined': ($grad-flying-flying),
 		'bug': ($grad-flying-bug),
 		'dark': ($grad-flying-dark),
@@ -505,6 +513,7 @@ $types: (
 		'water': ($grad-flying-water)
 	),
 	'ghost': (
+		'': ($grad-ghost-ghost),
 		'undefined': ($grad-ghost-ghost),
 		'bug': ($grad-ghost-bug),
 		'dark': ($grad-ghost-dark),
@@ -525,6 +534,7 @@ $types: (
 		'water': ($grad-ghost-water)
 	),
 	'grass': (
+		'': ($grad-grass-grass),
 		'undefined': ($grad-grass-grass),
 		'bug': ($grad-grass-bug),
 		'dark': ($grad-grass-dark),
@@ -545,6 +555,7 @@ $types: (
 		'water': ($grad-grass-water)
 	),
 	'ground': (
+		'': ($grad-ground-ground),
 		'undefined': ($grad-ground-ground),
 		'bug': ($grad-ground-bug),
 		'dark': ($grad-ground-dark),
@@ -565,6 +576,7 @@ $types: (
 		'water': ($grad-ground-water)
 	),
 	'ice': (
+		'': ($grad-ice-ice),
 		'undefined': ($grad-ice-ice),
 		'bug': ($grad-ice-bug),
 		'dark': ($grad-ice-dark),
@@ -585,6 +597,7 @@ $types: (
 		'water': ($grad-ice-water)
 	),
 	'normal': (
+		'': ($grad-normal-normal),
 		'undefined': ($grad-normal-normal),
 		'bug': ($grad-normal-bug),
 		'dark': ($grad-normal-dark),
@@ -605,6 +618,7 @@ $types: (
 		'water': ($grad-normal-water)
 	),
 	'poison': (
+		'': ($grad-poison-poison),
 		'undefined': ($grad-poison-poison),
 		'bug': ($grad-poison-bug),
 		'dark': ($grad-poison-dark),
@@ -625,6 +639,7 @@ $types: (
 		'water': ($grad-poison-water)
 	),
 	'psychic': (
+		'': ($grad-psychic-psychic),
 		'undefined': ($grad-psychic-psychic),
 		'bug': ($grad-psychic-bug),
 		'dark': ($grad-psychic-dark),
@@ -645,6 +660,7 @@ $types: (
 		'water': ($grad-psychic-water)
 	),
 	'rock': (
+		'': ($grad-rock-rock),
 		'undefined': ($grad-rock-rock),
 		'bug': ($grad-rock-bug),
 		'dark': ($grad-rock-dark),
@@ -665,6 +681,7 @@ $types: (
 		'water': ($grad-rock-water)
 	),
 	'steel': (
+		'': ($grad-steel-steel),
 		'undefined': ($grad-steel-steel),
 		'bug': ($grad-steel-bug),
 		'dark': ($grad-steel-dark),
@@ -685,6 +702,7 @@ $types: (
 		'water': ($grad-steel-water)
 	),
 	'water': (
+		'': ($grad-water-water), 
 		'undefined': ($grad-water-water),
 		'bug': ($grad-water-bug),
 		'dark': ($grad-water-dark),

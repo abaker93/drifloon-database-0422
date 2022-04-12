@@ -1,0 +1,24 @@
+// Gradient Background
+
+// used with pokedexCards, pokemon headers, & stat bar fills
+@mixin gradientBackground {
+
+  @each $type1, $types2 in $types {
+    &[data-type-one="#{$type1}"] {
+      @each $type2, $grad in $types2 {
+        @if($type2 == '') {
+          #pokedexCard { background: $grad; }
+          #pokemonHeader { background: $grad; }
+					#stats .statBarFill { background: $grad; }
+        } @else {
+          &[data-type-two="#{$type2}"] {
+            #pokedexCard { background: $grad; }
+            #pokemonHeader { background: $grad; }
+						#stats .statBarFill { background: $grad; }
+          }
+        }
+      }
+    }
+  }
+  
+}

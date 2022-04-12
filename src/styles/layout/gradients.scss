@@ -28,15 +28,15 @@
       height: 70px;
     }
 
-    @each $type1, $types2 in $types {
-      &.#{$type1} {
-        @each $type2, $grad in $types2 {
-          >.#{$type2} {
-            background: $grad;
-          }
-        }
-      }
-    }
+    // @each $type1, $types2 in $types {
+    //   &.#{$type1} {
+    //     @each $type2, $grad in $types2 {
+    //       >.#{$type2} {
+    //         background: $grad;
+    //       }
+    //     }
+    //   }
+    // }
   
   }
 

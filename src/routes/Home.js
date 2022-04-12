@@ -117,17 +117,15 @@ function Home() {
           <h2>Most Recent Updates</h2>
           {pokemon.map((poke) => (
             <Link
-              className="pokedexCard"
               to={`/pokedex/national/${url(
                 poke.fields.national,
                 poke.fields.altNum
               )}`}
               key={poke.id}
+              data-type-one={poke.fields.type1}
+              data-type-two={poke.fields.type2}
             >
-              <div
-                data-type-one={poke.fields.type1}
-                data-type-two={poke.fields.type2}
-              >
+              <div id="pokedexCard">
                 <img src={poke.fields.artwork[0].url} alt={poke.fields.name} />
                 <div className="details">
                   <h3>
