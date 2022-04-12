@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FilterMenu } from "FilterMenu";
 import AppsRounded from "@mui/icons-material/AppsRounded";
 import FilterListRounded from "@mui/icons-material/FilterListRounded";
 import SortRounded from "@mui/icons-material/SortRounded";
