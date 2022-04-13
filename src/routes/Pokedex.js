@@ -1,4 +1,5 @@
 import React from "react";
+
 import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
@@ -12,9 +13,13 @@ import { CardActionArea } from "@mui/material";
 import Chip from "@mui/material/Chip";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
+
 import AppsRoundedIcon from "@mui/icons-material/AppsRounded";
 import SettingsIcon from "@mui/icons-material/Settings";
-import { GetAllPokemon, url } from "../utilities";
+import FilterListRoundedIcon from "@mui/icons-material/FilterListRounded";
+import SortRoundedIcon from "@mui/icons-material/SortRounded";
+
+import { GetAllPokemon, url, convertNational } from "../utilities";
 
 export default function Pokedex() {
   const pokemon = GetAllPokemon();
@@ -25,18 +30,18 @@ export default function Pokedex() {
     return checkForType2Results;
   };
 
-  const convertNational = (num) => {
-    num = String(num);
-    while (num.length < 3) num = "0" + num;
-    return num;
-  };
-
   return (
     <>
       <AppBar position="absolute">
         <Toolbar>
           <Box sx={{ flexGrow: 1 }} />
-          <IconButton edge="start" aria-label="settings">
+          <IconButton edge="start" aria-label="filter">
+            <FilterListRoundedIcon />
+          </IconButton>
+          <IconButton aria-label="sort">
+            <SortRoundedIcon />
+          </IconButton>
+          <IconButton aria-label="settings">
             <SettingsIcon />
           </IconButton>
           <Link href="/">

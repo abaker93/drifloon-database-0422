@@ -83,3 +83,9 @@ export const url = (national, alt) => {
     return national;
   }
 };
+
+export const convertNational = (num) => {
+  num = String(num);
+  while (num.length < 3) num = "0" + num;
+  return num;
+};
