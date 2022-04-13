@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import CssBaseline from "@mui/material/CssBaseline";
 import Home from "./routes/Home";
 import Pokedex from "./routes/Pokedex";
+import Pokemon from "./routes/Pokemon";
 
 export default function App() {
   return (
@@ -13,7 +14,13 @@ export default function App() {
           <Route path="/">
             <Route index element={<Home />} />
             <Route path="pokedex">
-              <Route path="national" element={<Pokedex />}></Route>
+              <Route path="national">
+                <Route index element={<Pokedex />} />
+                <Route path=":pokedexId">
+                  <Route index element={<Pokemon />} />
+                  <Route path=":pokedexAltId" element={<Pokemon />} />
+                </Route>
+              </Route>
             </Route>
           </Route>
         </Routes>

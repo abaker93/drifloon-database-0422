@@ -10,7 +10,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { CardActionArea } from "@mui/material";
 import Chip from "@mui/material/Chip";
-import AppsIcon from "@mui/icons-material/Apps";
+import AppsRoundedIcon from "@mui/icons-material/AppsRounded";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { GetPokemonUpdates } from "../utilities";
 
@@ -64,9 +64,9 @@ export default function Home() {
             <IconButton edge="start" aria-label="settings">
               <SettingsIcon />
             </IconButton>
-            <Link to="/">
+            <Link href="/">
               <IconButton aria-label="home">
-                <AppsIcon />
+                <AppsRoundedIcon />
               </IconButton>
             </Link>
           </Toolbar>
@@ -114,8 +114,8 @@ export default function Home() {
               return (
                 <Chip
                   key={index}
-                  icon={<AppsIcon />}
                   label={value}
+                  className={value}
                   clickable
                   sx={{ mr: 1, mb: 1 }}
                 />
@@ -130,6 +130,7 @@ export default function Home() {
           <Stack spacing={2}>
             {pokemon.map((poke) => (
               <Card
+                key={poke.id}
                 data-type-one={poke.fields.type1}
                 data-type-two={poke.fields.type2}
               >
