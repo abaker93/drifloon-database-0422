@@ -139,6 +139,27 @@ export function GetEvolutions(evolutionId) {
   return evolution;
 }
 
+export function GetAbilities(abilityId) {
+  const [abilities, setAbilities] = useState([]);
+
+  useEffect(() => {
+    setAbilities([]);
+    for (let i = 0; i < abilityId.length; i++) {
+      base("abilities")
+        .select({
+          view: "master",
+          filterByFormula: `RECORD_ID() = "${abilityId[i]}"`
+        })
+        .eachPage((records, fetchNextPage) => {
+          setAbilities((rec) => [...rec, ...records]);
+          fetchNextPage();
+        });
+    }
+  }, []);
+
+  return abilities;
+}
+
 export const url = (national, alt) => {
   national = String(national);
   while (national.length < 3) national = "0" + national;
