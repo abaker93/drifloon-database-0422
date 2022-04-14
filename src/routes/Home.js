@@ -12,42 +12,9 @@ import { CardActionArea } from "@mui/material";
 import Chip from "@mui/material/Chip";
 import AppsRoundedIcon from "@mui/icons-material/AppsRounded";
 import SettingsIcon from "@mui/icons-material/Settings";
-import { GetPokemonUpdates } from "../utilities";
+import { generations, typesArray, GetPokemonUpdates, url } from "../utilities";
 
 export default function Home() {
-  const generations = [
-    "Gen I",
-    "Gen II",
-    "Gen III",
-    "Gen IV",
-    "Gen V",
-    "Gen VI",
-    "Gen VII",
-    "Gen VIII",
-    "Gen IX"
-  ];
-
-  const typesArray = [
-    "bug",
-    "dark",
-    "dragon",
-    "electric",
-    "fairy",
-    "fighting",
-    "fire",
-    "flying",
-    "ghost",
-    "grass",
-    "ground",
-    "ice",
-    "normal",
-    "poison",
-    "psychic",
-    "rock",
-    "steel",
-    "water"
-  ];
-
   const pokemon = GetPokemonUpdates();
 
   const changeDateTime = (string) => {
@@ -134,20 +101,28 @@ export default function Home() {
                 data-type-one={poke.fields.type1}
                 data-type-two={poke.fields.type2}
               >
-                <CardActionArea>
-                  <CardContent>
-                    <div className="image">
-                      <img
-                        src={poke.fields.artwork[0].url}
-                        alt={poke.fields.name}
-                      />
-                    </div>
-                    <div className="details">
-                      <h3>{poke.fields.name}</h3>
-                      <p>{changeDateTime(poke.fields.lastModifiedTime)}</p>
-                    </div>
-                  </CardContent>
-                </CardActionArea>
+                <Link
+                  href={`/pokedex/national/${url(
+                    poke.fields.national,
+                    poke.fields.altNum
+                  )}/`}
+                  underline="none"
+                >
+                  <CardActionArea>
+                    <CardContent>
+                      <div className="image">
+                        <img
+                          src={poke.fields.artwork[0].url}
+                          alt={poke.fields.name}
+                        />
+                      </div>
+                      <div className="details">
+                        <h3>{poke.fields.name}</h3>
+                        <p>{changeDateTime(poke.fields.lastModifiedTime)}</p>
+                      </div>
+                    </CardContent>
+                  </CardActionArea>
+                </Link>
               </Card>
             ))}
           </Stack>

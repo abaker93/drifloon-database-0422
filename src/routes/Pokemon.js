@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
@@ -13,14 +13,16 @@ import AppsRoundedIcon from "@mui/icons-material/AppsRounded";
 import SettingsIcon from "@mui/icons-material/Settings";
 import ArrowBackIosRoundedIcon from "@mui/icons-material/ArrowBackIosRounded";
 
-import { GetPokemon, convertNational } from "../utilities";
 import { useParams } from "react-router-dom";
 import { Statbar } from "../components/Statbar";
 import { PokemonSpeedDial } from "../components/PokemonSpeedDial";
+import { Evolution } from "../components/Evolution";
+import { base } from "../components/base";
+import { typesArray, GetPokemon, convertNational } from "../utilities";
 
 export default function Pokemon() {
-  let params = useParams();
-  let pokemon = GetPokemon(
+  const params = useParams();
+  const pokemon = GetPokemon(
     parseInt(params.pokedexId, 10),
     parseInt(params.pokedexAltId, 10)
   );
@@ -53,50 +55,61 @@ export default function Pokemon() {
         </Toolbar>
       </AppBar>
       {pokemon.map((poke) => (
-        <>
-          <Box key={poke.id}>
-            <Box className="pokemonHeader" sx={{ mt: 10 }}>
-              <p>{poke.fields.japaneseKata}</p>
-              <img src={poke.fields.artwork[0].url} alt={poke.fields.name} />
-            </Box>
-            <Container maxWidth="xl" sx={{ mt: 2 }}>
-              <Box id="basicInfo">
-                <h1>
-                  <span>
-                    <span>No.</span>
-                    {convertNational(poke.fields.national)}
-                  </span>
-                  {poke.fields.name}
-                </h1>
-                <p>{poke.fields.category}</p>
-                <div className="types">
-                  <Chip
-                    className={poke.fields.type1}
-                    label={poke.fields.type1}
-                    sx={{ mr: 1 }}
-                  />
-                  {checkForType2(poke.fields.type2)}
-                </div>
-              </Box>
-            </Container>
-            <Container>
-              <Box id="stats">
-                <Statbar stat="hp" label="HP" num={poke.fields.hp} />
-                <Statbar stat="att" label="Attack" num={poke.fields.att} />
-                <Statbar stat="def" label="Defense" num={poke.fields.def} />
-                <Statbar stat="spAtt" label="Sp.Att" num={poke.fields.spAtt} />
-                <Statbar stat="spDef" label="Sp.Def" num={poke.fields.spDef} />
-                <Statbar stat="spd" label="Speed" num={poke.fields.spd} />
-
-                <Stack direction="row" spacing={1}>
-                  <Chip label="Base" clickable />
-                  <Chip label="Lvl 50" clickable />
-                  <Chip label="Lvl 100" clickable />
-                </Stack>
-              </Box>
-            </Container>
+        <Box key={poke.id}>
+          <Box className="pokemonHeader" sx={{ mt: 10 }}>
+            <p>{poke.fields.japaneseKata}</p>
+            <img src={poke.fields.artwork[0].url} alt={poke.fields.name} />
           </Box>
-        </>
+          <Container maxWidth="xl" sx={{ mt: 5 }}>
+            <Box id="basicInfo">
+              <h1>
+                <span>
+                  <span>No.</span>
+                  {convertNational(poke.fields.national)}
+                </span>
+                {poke.fields.name}
+              </h1>
+              <p>{poke.fields.category}</p>
+              <div className="types">
+                <Chip
+                  className={poke.fields.type1}
+                  label={poke.fields.type1}
+                  sx={{ mr: 1 }}
+                />
+                {checkForType2(poke.fields.type2)}
+              </div>
+            </Box>
+          </Container>
+          <Container maxWidth="xl" sx={{ mt: 5 }}>
+            <Box id="stats">
+              <Statbar stat="hp" label="HP" num={poke.fields.hp} />
+              <Statbar stat="att" label="Attack" num={poke.fields.att} />
+              <Statbar stat="def" label="Defense" num={poke.fields.def} />
+              <Statbar stat="spAtt" label="Sp.Att" num={poke.fields.spAtt} />
+              <Statbar stat="spDef" label="Sp.Def" num={poke.fields.spDef} />
+              <Statbar stat="spd" label="Speed" num={poke.fields.spd} />
+
+              <Stack direction="row" spacing={1}>
+                <Chip label="Base" clickable />
+                <Chip label="Lvl 50" clickable />
+                <Chip label="Lvl 100" clickable />
+              </Stack>
+            </Box>
+          </Container>
+          <Container maxWidth="xl" sx={{ mt: 5 }}>
+            <Box id="evolution">
+              <h2>Evolution</h2>
+              <Evolution key={poke.id} pokemon={poke} />
+            </Box>
+          </Container>
+          <Container maxWidth="xl" sx={{ mt: 5 }}>
+            <Box id="weaknesses">
+              {typesArray.map((value, index) => {
+                return <Chip key={index} className={value} />;
+              })}
+            </Box>
+          </Container>
+        </Box>
       ))}
     </>
   );

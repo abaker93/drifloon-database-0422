@@ -1,9 +1,38 @@
-import { useState, useEffect } from "react";
-import Airtable from "airtable";
+import { useState, useEffect, useRef } from "react";
+import { base } from "./components/base";
 
-const base = new Airtable({ apiKey: "keyZwDzpt9mvZCXxD" }).base(
-  "appGp9DfGNdO1qLcm"
-);
+export const generations = [
+  "Gen I",
+  "Gen II",
+  "Gen III",
+  "Gen IV",
+  "Gen V",
+  "Gen VI",
+  "Gen VII",
+  "Gen VIII",
+  "Gen IX"
+];
+
+export const typesArray = [
+  "bug",
+  "dark",
+  "dragon",
+  "electric",
+  "fairy",
+  "fighting",
+  "fire",
+  "flying",
+  "ghost",
+  "grass",
+  "ground",
+  "ice",
+  "normal",
+  "poison",
+  "psychic",
+  "rock",
+  "steel",
+  "water"
+];
 
 export function GetAllPokemon() {
   const [pokemon, setPokemon] = useState([]);
@@ -68,6 +97,46 @@ export function GetPokemon(pokedexId, pokedexAlt) {
   }, []);
 
   return pokemon;
+}
+
+// export function getPokemonByRecord(pokemonId) {
+//   const [pokemon, setPokemon] = useState([]);
+
+//   useEffect(() => {
+//     setPokemon([]);
+//     base("nationalDex")
+//       .select({
+//         view: "master",
+//         filterByFormula: `RECORD_ID() = "${pokemonId}"`
+//       })
+//       .eachPage((records, fetchNextPage) => {
+//         setPokemon((rec) => [...rec, ...records]);
+//         fetchNextPage();
+//       });
+//   }, []);
+
+//   return pokemon;
+// }
+
+export function GetEvolutions(evolutionId) {
+  const [evolution, setEvolution] = useState([]);
+
+  useEffect(() => {
+    setEvolution([]);
+    for (let i = 0; i < evolutionId.length; i++) {
+      base("evolution")
+        .select({
+          view: "master",
+          filterByFormula: `RECORD_ID() = "${evolutionId[i]}"`
+        })
+        .eachPage((records, fetchNextPage) => {
+          setEvolution((rec) => [...rec, ...records]);
+          fetchNextPage();
+        });
+    }
+  }, []);
+
+  return evolution;
 }
 
 export const url = (national, alt) => {
