@@ -63,7 +63,7 @@ export default function Pokemon() {
             <p>{poke.fields.japaneseKata}</p>
             <img src={poke.fields.artwork[0].url} alt={poke.fields.name} />
           </Box>
-          {/* <Container maxWidth="xl" sx={{ mt: 5 }}>
+          <Container maxWidth="xl" sx={{ mt: 5 }}>
             <Box id="basicInfo">
               <h1>
                 <span>
@@ -82,8 +82,8 @@ export default function Pokemon() {
                 {checkForType2(poke.fields.type2)}
               </div>
             </Box>
-          </Container> */}
-          {/* <Container maxWidth="xl" sx={{ mt: 5 }}>
+          </Container>
+          <Container maxWidth="xl" sx={{ mt: 5 }}>
             <Box id="stats">
               <Statbar stat="hp" label="HP" num={poke.fields.hp} />
               <Statbar stat="att" label="Attack" num={poke.fields.att} />
@@ -98,7 +98,7 @@ export default function Pokemon() {
                 <Chip label="Lvl 100" clickable />
               </Stack>
             </Box>
-          </Container> */}
+          </Container>
           <Container maxWidth="xl" sx={{ mt: 5 }}>
             <Box id="evolution">
               <Evolution key={poke.id} pokemon={poke} />

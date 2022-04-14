@@ -41,9 +41,9 @@ export function GetAllPokemon() {
     setPokemon([]);
     base("nationalDex")
       .select({
-        maxRecords: 10,
+        // maxRecords: 10,
         view: "master",
-        filterByFormula: 'altCheck = ""'
+        filterByFormula: 'AND(altCheck = "", hideFromPokedex = FALSE())'
       })
       .eachPage((records, fetchNextPage) => {
         setPokemon((rec) => [...rec, ...records]);
@@ -99,24 +99,24 @@ export function GetPokemon(pokedexId, pokedexAlt) {
   return pokemon;
 }
 
-// export function getPokemonByRecord(pokemonId) {
-//   const [pokemon, setPokemon] = useState([]);
+export function getPokemonByRecord(pokemonId) {
+  const [pokemon, setPokemon] = useState([]);
 
-//   useEffect(() => {
-//     setPokemon([]);
-//     base("nationalDex")
-//       .select({
-//         view: "master",
-//         filterByFormula: `RECORD_ID() = "${pokemonId}"`
-//       })
-//       .eachPage((records, fetchNextPage) => {
-//         setPokemon((rec) => [...rec, ...records]);
-//         fetchNextPage();
-//       });
-//   }, []);
+  useEffect(() => {
+    setPokemon([]);
+    base("nationalDex")
+      .select({
+        view: "master",
+        filterByFormula: `RECORD_ID() = "${pokemonId}"`
+      })
+      .eachPage((records, fetchNextPage) => {
+        setPokemon((rec) => [...rec, ...records]);
+        fetchNextPage();
+      });
+  }, []);
 
-//   return pokemon;
-// }
+  return pokemon;
+}
 
 export function GetEvolutions(evolutionId) {
   const [evolution, setEvolution] = useState([]);
