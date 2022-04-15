@@ -65,7 +65,8 @@ export function GetPokemonUpdates() {
         view: "master",
         sort: [{ field: "lastModifiedTime", direction: "desc" }],
         timeZone: "America/Toronto",
-        userLocale: "en-ca"
+        userLocale: "en-ca",
+        filterByFormula: "hideFromPokedex = FALSE()"
       })
       .eachPage((records, fetchNextPage) => {
         setPokemon((rec) => [...rec, ...records]);
@@ -126,7 +127,7 @@ export function GetAltForms(pokemonId) {
     base("nationalDex")
       .select({
         view: "master",
-        filterByFormula: `nationalDex = ${pokemonId}`
+        filterByFormula: `AND(national = ${pokemonId}, altNum != 0)`
       })
       .eachPage((records, fetchNextPage) => {
         setPokemon((rec) => [...rec, ...records]);
@@ -163,16 +164,18 @@ export function GetAbilities(abilityId) {
 
   useEffect(() => {
     setAbilities([]);
-    for (let i = 0; i < abilityId.length; i++) {
-      base("abilities")
-        .select({
-          view: "master",
-          filterByFormula: `RECORD_ID() = "${abilityId[i]}"`
-        })
-        .eachPage((records, fetchNextPage) => {
-          setAbilities((rec) => [...rec, ...records]);
-          fetchNextPage();
-        });
+    if (abilityId) {
+      for (let i = 0; i < abilityId.length; i++) {
+        base("abilities")
+          .select({
+            view: "master",
+            filterByFormula: `RECORD_ID() = "${abilityId[i]}"`
+          })
+          .eachPage((records, fetchNextPage) => {
+            setAbilities((rec) => [...rec, ...records]);
+            fetchNextPage();
+          });
+      }
     }
   }, []);
 

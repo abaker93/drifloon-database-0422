@@ -25,14 +25,18 @@ export default function Pokedex() {
   const pokemon = GetAllPokemon();
 
   const checkForType2 = (type2) => {
-    const checkForType2Results = type2 ? <Chip label={type2} /> : "";
+    const checkForType2Results = type2 ? (
+      <Chip className={type2} label={type2} />
+    ) : (
+      ""
+    );
 
     return checkForType2Results;
   };
 
   return (
     <>
-      <AppBar position="absolute">
+      <AppBar>
         <Toolbar>
           <Box sx={{ flexGrow: 1 }} />
           <IconButton edge="start" aria-label="filter">

@@ -21,6 +21,7 @@ import { PokemonSpeedDial } from "../components/PokemonSpeedDial";
 import { Evolution } from "../components/Evolution";
 import { Weakness } from "../components/Weakness";
 import { Abilities } from "../components/Abilities";
+import { AltFormNav } from "../components/AltFormNav";
 import { typesArray, GetPokemon, convertNational } from "../utilities";
 
 export default function Pokemon() {
@@ -39,7 +40,7 @@ export default function Pokemon() {
   return (
     <>
       <PokemonSpeedDial />
-      <AppBar position="absolute">
+      <AppBar>
         <Toolbar>
           <Link href="/pokedex/national">
             <IconButton edge="start" aria-label="back">
@@ -83,6 +84,11 @@ export default function Pokemon() {
               </div>
             </Box>
           </Container>
+          {/* <Container maxWidth="xl" sx={{ mt: 5 }}>
+            <Box id="altForms">
+              <AltFormNav national={poke.fields.national} />
+            </Box>
+          </Container> */}
           <Container maxWidth="xl" sx={{ mt: 5 }}>
             <Box id="stats">
               <Statbar stat="hp" label="HP" num={poke.fields.hp} />

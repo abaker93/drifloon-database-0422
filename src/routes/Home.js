@@ -25,7 +25,7 @@ export default function Home() {
   return (
     <>
       <Box>
-        <AppBar position="absolute">
+        <AppBar>
           <Toolbar>
             <Box sx={{ flexGrow: 1 }} />
             <IconButton edge="start" aria-label="settings">

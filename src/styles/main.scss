@@ -1,1 +1,7 @@
 img { width: 100px; }
+@import 'base/base';
+@import 'base/mui';
+@import 'base/reset';
+@import 'base/typography';
+
+@import 'utilities/variables/colors';
