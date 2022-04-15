@@ -99,7 +99,7 @@ export function GetPokemon(pokedexId, pokedexAlt) {
   return pokemon;
 }
 
-export function getPokemonByRecord(pokemonId) {
+export function GetPokemonByRecord(pokemonId) {
   const [pokemon, setPokemon] = useState([]);
 
   useEffect(() => {
@@ -108,6 +108,25 @@ export function getPokemonByRecord(pokemonId) {
       .select({
         view: "master",
         filterByFormula: `RECORD_ID() = "${pokemonId}"`
+      })
+      .eachPage((records, fetchNextPage) => {
+        setPokemon((rec) => [...rec, ...records]);
+        fetchNextPage();
+      });
+  }, []);
+
+  return pokemon;
+}
+
+export function GetAltForms(pokemonId) {
+  const [pokemon, setPokemon] = useState([]);
+
+  useEffect(() => {
+    setPokemon([]);
+    base("nationalDex")
+      .select({
+        view: "master",
+        filterByFormula: `nationalDex = ${pokemonId}`
       })
       .eachPage((records, fetchNextPage) => {
         setPokemon((rec) => [...rec, ...records]);
