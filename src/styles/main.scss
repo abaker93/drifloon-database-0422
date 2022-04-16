@@ -1,7 +1,8 @@
-img { width: 100px; }
-@import 'base/base';
-@import 'base/mui';
 @import 'base/reset';
 @import 'base/typography';
+@import 'base/base';
+@import 'base/mui';
 
 @import 'utilities/variables/colors';
+@import 'utilities/variables/gradients';
+@import 'utilities/variables/variables';

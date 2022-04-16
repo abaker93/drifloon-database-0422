@@ -1,5 +1,4 @@
-import React from "react";
-import { createTheme } from "@mui/material/styles";
+import { createTheme, experimental_sx as sx } from "@mui/material/styles";
 
 export const theme = createTheme({
   palette: {
@@ -20,33 +19,6 @@ export const theme = createTheme({
       hint: "hsla(0,0%,80%,1)"
     }
   },
-  shadows: [
-    "none",
-    "0px 59px 24px rgba(89, 89, 89, 0.03), 0px 33px 20px rgba(89, 89, 89, 0.1), 0px 15px 15px rgba(89, 89, 89, 0.17), 0px 4px 8px rgba(89, 89, 89, 0.2), 0px 0px 0px rgba(89, 89, 89, 0.2);",
-    "0px 59px 24px rgba(89, 89, 89, 0.03), 0px 33px 20px rgba(89, 89, 89, 0.1), 0px 15px 15px rgba(89, 89, 89, 0.17), 0px 4px 8px rgba(89, 89, 89, 0.2), 0px 0px 0px rgba(89, 89, 89, 0.2);",
-    "0px 59px 24px rgba(89, 89, 89, 0.03), 0px 33px 20px rgba(89, 89, 89, 0.1), 0px 15px 15px rgba(89, 89, 89, 0.17), 0px 4px 8px rgba(89, 89, 89, 0.2), 0px 0px 0px rgba(89, 89, 89, 0.2);",
-    "0px 59px 24px rgba(89, 89, 89, 0.03), 0px 33px 20px rgba(89, 89, 89, 0.1), 0px 15px 15px rgba(89, 89, 89, 0.17), 0px 4px 8px rgba(89, 89, 89, 0.2), 0px 0px 0px rgba(89, 89, 89, 0.2);",
-    "0px 59px 24px rgba(89, 89, 89, 0.03), 0px 33px 20px rgba(89, 89, 89, 0.1), 0px 15px 15px rgba(89, 89, 89, 0.17), 0px 4px 8px rgba(89, 89, 89, 0.2), 0px 0px 0px rgba(89, 89, 89, 0.2);",
-    "0px 59px 24px rgba(89, 89, 89, 0.03), 0px 33px 20px rgba(89, 89, 89, 0.1), 0px 15px 15px rgba(89, 89, 89, 0.17), 0px 4px 8px rgba(89, 89, 89, 0.2), 0px 0px 0px rgba(89, 89, 89, 0.2);",
-    "0px 59px 24px rgba(89, 89, 89, 0.03), 0px 33px 20px rgba(89, 89, 89, 0.1), 0px 15px 15px rgba(89, 89, 89, 0.17), 0px 4px 8px rgba(89, 89, 89, 0.2), 0px 0px 0px rgba(89, 89, 89, 0.2);",
-    "0px 59px 24px rgba(89, 89, 89, 0.03), 0px 33px 20px rgba(89, 89, 89, 0.1), 0px 15px 15px rgba(89, 89, 89, 0.17), 0px 4px 8px rgba(89, 89, 89, 0.2), 0px 0px 0px rgba(89, 89, 89, 0.2);",
-    "0px 59px 24px rgba(89, 89, 89, 0.03), 0px 33px 20px rgba(89, 89, 89, 0.1), 0px 15px 15px rgba(89, 89, 89, 0.17), 0px 4px 8px rgba(89, 89, 89, 0.2), 0px 0px 0px rgba(89, 89, 89, 0.2);",
-    "0px 59px 24px rgba(89, 89, 89, 0.03), 0px 33px 20px rgba(89, 89, 89, 0.1), 0px 15px 15px rgba(89, 89, 89, 0.17), 0px 4px 8px rgba(89, 89, 89, 0.2), 0px 0px 0px rgba(89, 89, 89, 0.2);",
-    "0px 59px 24px rgba(89, 89, 89, 0.03), 0px 33px 20px rgba(89, 89, 89, 0.1), 0px 15px 15px rgba(89, 89, 89, 0.17), 0px 4px 8px rgba(89, 89, 89, 0.2), 0px 0px 0px rgba(89, 89, 89, 0.2);",
-    "0px 59px 24px rgba(89, 89, 89, 0.03), 0px 33px 20px rgba(89, 89, 89, 0.1), 0px 15px 15px rgba(89, 89, 89, 0.17), 0px 4px 8px rgba(89, 89, 89, 0.2), 0px 0px 0px rgba(89, 89, 89, 0.2);",
-    "0px 59px 24px rgba(89, 89, 89, 0.03), 0px 33px 20px rgba(89, 89, 89, 0.1), 0px 15px 15px rgba(89, 89, 89, 0.17), 0px 4px 8px rgba(89, 89, 89, 0.2), 0px 0px 0px rgba(89, 89, 89, 0.2);",
-    "0px 59px 24px rgba(89, 89, 89, 0.03), 0px 33px 20px rgba(89, 89, 89, 0.1), 0px 15px 15px rgba(89, 89, 89, 0.17), 0px 4px 8px rgba(89, 89, 89, 0.2), 0px 0px 0px rgba(89, 89, 89, 0.2);",
-    "0px 59px 24px rgba(89, 89, 89, 0.03), 0px 33px 20px rgba(89, 89, 89, 0.1), 0px 15px 15px rgba(89, 89, 89, 0.17), 0px 4px 8px rgba(89, 89, 89, 0.2), 0px 0px 0px rgba(89, 89, 89, 0.2);",
-    "0px 59px 24px rgba(89, 89, 89, 0.03), 0px 33px 20px rgba(89, 89, 89, 0.1), 0px 15px 15px rgba(89, 89, 89, 0.17), 0px 4px 8px rgba(89, 89, 89, 0.2), 0px 0px 0px rgba(89, 89, 89, 0.2);",
-    "0px 59px 24px rgba(89, 89, 89, 0.03), 0px 33px 20px rgba(89, 89, 89, 0.1), 0px 15px 15px rgba(89, 89, 89, 0.17), 0px 4px 8px rgba(89, 89, 89, 0.2), 0px 0px 0px rgba(89, 89, 89, 0.2);",
-    "0px 59px 24px rgba(89, 89, 89, 0.03), 0px 33px 20px rgba(89, 89, 89, 0.1), 0px 15px 15px rgba(89, 89, 89, 0.17), 0px 4px 8px rgba(89, 89, 89, 0.2), 0px 0px 0px rgba(89, 89, 89, 0.2);",
-    "0px 59px 24px rgba(89, 89, 89, 0.03), 0px 33px 20px rgba(89, 89, 89, 0.1), 0px 15px 15px rgba(89, 89, 89, 0.17), 0px 4px 8px rgba(89, 89, 89, 0.2), 0px 0px 0px rgba(89, 89, 89, 0.2);",
-    "0px 59px 24px rgba(89, 89, 89, 0.03), 0px 33px 20px rgba(89, 89, 89, 0.1), 0px 15px 15px rgba(89, 89, 89, 0.17), 0px 4px 8px rgba(89, 89, 89, 0.2), 0px 0px 0px rgba(89, 89, 89, 0.2);",
-    "0px 59px 24px rgba(89, 89, 89, 0.03), 0px 33px 20px rgba(89, 89, 89, 0.1), 0px 15px 15px rgba(89, 89, 89, 0.17), 0px 4px 8px rgba(89, 89, 89, 0.2), 0px 0px 0px rgba(89, 89, 89, 0.2);",
-    "0px 59px 24px rgba(89, 89, 89, 0.03), 0px 33px 20px rgba(89, 89, 89, 0.1), 0px 15px 15px rgba(89, 89, 89, 0.17), 0px 4px 8px rgba(89, 89, 89, 0.2), 0px 0px 0px rgba(89, 89, 89, 0.2);",
-    "0px 59px 24px rgba(89, 89, 89, 0.03), 0px 33px 20px rgba(89, 89, 89, 0.1), 0px 15px 15px rgba(89, 89, 89, 0.17), 0px 4px 8px rgba(89, 89, 89, 0.2), 0px 0px 0px rgba(89, 89, 89, 0.2);",
-    "0px 59px 24px rgba(89, 89, 89, 0.03), 0px 33px 20px rgba(89, 89, 89, 0.1), 0px 15px 15px rgba(89, 89, 89, 0.17), 0px 4px 8px rgba(89, 89, 89, 0.2), 0px 0px 0px rgba(89, 89, 89, 0.2);"
-  ],
   props: {
     MuiTooltip: {
       arrow: true

@@ -14,7 +14,6 @@ export default function App() {
   return (
     <>
       <StyledEngineProvider injectFirst>
-        <CssBaseline />
         <ThemeProvider theme={theme}>
           <Router>
             <Routes>

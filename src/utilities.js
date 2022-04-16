@@ -41,7 +41,7 @@ export function GetAllPokemon() {
     setPokemon([]);
     base("nationalDex")
       .select({
-        // maxRecords: 10,
+        maxRecords: 10,
         view: "master",
         filterByFormula: 'AND(altCheck = "", hideFromPokedex = FALSE())'
       })

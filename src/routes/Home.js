@@ -1,4 +1,5 @@
 import React from "react";
+
 import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
@@ -10,9 +11,12 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { CardActionArea } from "@mui/material";
 import Chip from "@mui/material/Chip";
+
 import AppsRoundedIcon from "@mui/icons-material/AppsRounded";
 import SettingsIcon from "@mui/icons-material/Settings";
+
 import { generations, typesArray, GetPokemonUpdates, url } from "../utilities";
+import * as color from "../colors";
 
 export default function Home() {
   const pokemon = GetPokemonUpdates();
@@ -48,7 +52,13 @@ export default function Home() {
         <Box>
           <h2>Quick Links</h2>
           <Link href="/pokedex/national" underline="none">
-            <Card>
+            <Card
+              className="clickable"
+              sx={{
+                backgroundColor: color.fighting(),
+                color: "white"
+              }}
+            >
               <CardActionArea>
                 <CardContent>National Pokédex</CardContent>
               </CardActionArea>
@@ -65,6 +75,8 @@ export default function Home() {
                 <Chip
                   key={index}
                   label={value}
+                  variant="outline"
+                  color="primary"
                   clickable
                   sx={{ mr: 1, mb: 1 }}
                 />
@@ -82,7 +94,7 @@ export default function Home() {
                 <Chip
                   key={index}
                   label={value}
-                  className={value}
+                  data-type={value}
                   clickable
                   sx={{ mr: 1, mb: 1 }}
                 />
@@ -97,6 +109,7 @@ export default function Home() {
           <Stack spacing={2}>
             {pokemon.map((poke) => (
               <Card
+                className="clickable"
                 key={poke.id}
                 data-type-one={poke.fields.type1}
                 data-type-two={poke.fields.type2}
