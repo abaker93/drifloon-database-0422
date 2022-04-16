@@ -6,6 +6,12 @@ body, html { background-color: $bodyBackground; }
 
 img { max-width: 100%; }
 
+/*********************************************
+**********************************************
+		 MUICHIP
+**********************************************
+*********************************************/
+
 .MuiChip-root {
 	height: auto;
 
@@ -51,6 +57,12 @@ img { max-width: 100%; }
 
 	.MuiChip-label { padding: 0; }
 }
+
+/*********************************************
+**********************************************
+		 MUICARD
+**********************************************
+*********************************************/
 	
 .MuiCard-root {
 	overflow: visible;
@@ -61,13 +73,18 @@ img { max-width: 100%; }
 	top: 0;
 	
 	&.clickable:hover {
-		left: 5px;
-		top: -5px;
+		left: 10px;
+		top: -10px;
 	}
 
 	@each $type, $color in $single-types {
 		&[data-type-one="#{$type}"].clickable:hover {
-			box-shadow: rgba($color, 0.4) -5px 5px, rgba($color, 0.3) -10px 10px, rgba($color, 0.2) -15px 15px, rgba($color, 0.1) -20px 20px, rgba($color, 0.05) -25px 25px;
+			box-shadow:
+				rgba($color, 0.4) -5px 5px,
+				rgba($color, 0.3) -10px 10px,
+				rgba($color, 0.2) -15px 15px,
+				rgba($color, 0.1) -20px 20px,
+				rgba($color, 0.05) -25px 25px;
 		}
 	}
 
@@ -101,8 +118,9 @@ img { max-width: 100%; }
 		}
 
 		.details {
+			h3, h4, p { color: $white; }
+
 			h3 {
-				color: $white;
 				font-size: 20px;
 				margin-bottom: 5px;
 
@@ -124,7 +142,6 @@ img { max-width: 100%; }
 				display: grid;
 				grid-template-columns: repeat(7, minmax(0, 1fr));
 				column-gap: 3px;
-				color: $white;
 				text-transform: uppercase;
 				justify-items: center;
 
@@ -133,17 +150,16 @@ img { max-width: 100%; }
 
 					h4 {
 						font-size: 7px;
-						color: $white;
 						font-weight: 600;
 					}
 
 					p {
 						font-size: 12px;
-						color: $white;
 						font-weight: 400;
 					}
 				}
 			}
 		}
 	}
+	&.short .image img { top: -20px; }
 }

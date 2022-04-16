@@ -106,10 +106,10 @@ export default function Home() {
       <Container maxWidth="xl" sx={{ mt: 8 }}>
         <Box>
           <h2>Most Recent Updates</h2>
-          <Stack spacing={2}>
+          <Stack spacing={5}>
             {pokemon.map((poke) => (
               <Card
-                className="clickable"
+                className="clickable short"
                 key={poke.id}
                 data-type-one={poke.fields.type1}
                 data-type-two={poke.fields.type2}
@@ -123,16 +123,19 @@ export default function Home() {
                 >
                   <CardActionArea>
                     <CardContent>
-                      <div className="image">
-                        <img
-                          src={poke.fields.artwork[0].url}
-                          alt={poke.fields.name}
-                        />
-                      </div>
-                      <div className="details">
-                        <h3>{poke.fields.name}</h3>
-                        <p>{changeDateTime(poke.fields.lastModifiedTime)}</p>
-                      </div>
+                      <Stack direction="row" spacing={2}>
+                        <div className="image">
+                          <img
+                            src={poke.fields.artwork[0].url}
+                            alt={poke.fields.name}
+                            sx={{ top: "-20px" }}
+                          />
+                        </div>
+                        <div className="details">
+                          <h3>{poke.fields.name}</h3>
+                          <p>{changeDateTime(poke.fields.lastModifiedTime)}</p>
+                        </div>
+                      </Stack>
                     </CardContent>
                   </CardActionArea>
                 </Link>
