@@ -7,11 +7,13 @@ import Stack from "@mui/material/Stack";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Drawer from "@mui/material/Drawer";
+import Divider from "@mui/material/Divider";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { CardActionArea } from "@mui/material";
@@ -23,45 +25,14 @@ import AppsRoundedIcon from "@mui/icons-material/AppsRounded";
 import SettingsIcon from "@mui/icons-material/Settings";
 import FilterListRoundedIcon from "@mui/icons-material/FilterListRounded";
 import SortRoundedIcon from "@mui/icons-material/SortRounded";
+import InboxIcon from "@mui/icons-material/MoveToInbox";
+import MailIcon from "@mui/icons-material/Mail";
 
 import { GetAllPokemon, url, convertNational } from "../utilities";
+import SettingsDrawer from "../components/SettingsDrawer";
+import TemporaryDrawer from "../components/SettingsDrawer";
 
 export default function Pokedex() {
-  const [state, setState] = useState({ open: false });
-  // const [colorMode, setColorMode] = useState("light");
-
-  // const handleColorMode = (event, newColorMode) => {
-  //   setColorMode(newColorMode);
-  // };
-
-  const toggleDrawer = (open) => (event) => {
-    if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return;
-    }
-
-    setState({ ...state, open: open });
-  };
-
-  const list = () => (
-    <Box
-      sx={{ width: 250 }}
-      role="presentation"
-      onClick={toggleDrawer(false)}
-      onKeyDown={toggleDrawer(false)}
-    >
-      <List>
-        <ListItem button>
-          <ListItemIcon>
-            <SortRoundedIcon />
-          </ListItemIcon>
-        </ListItem>
-      </List>
-    </Box>
-  );
-
   const pokemon = GetAllPokemon();
 
   const checkForType2 = (type2) => {
@@ -84,12 +55,7 @@ export default function Pokedex() {
           <IconButton aria-label="sort">
             <SortRoundedIcon />
           </IconButton>
-          <IconButton aria-label="settings" onClick={toggleDrawer(true)}>
-            <SettingsIcon />
-            <Drawer open={state["open"]} onClose={toggleDrawer(false)}>
-              {list()}
-            </Drawer>
-          </IconButton>
+          <SettingsDrawer />
           <Link href="/">
             <IconButton aria-label="home">
               <AppsRoundedIcon />

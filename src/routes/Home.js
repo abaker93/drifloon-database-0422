@@ -27,7 +27,7 @@ export default function Home() {
   };
 
   return (
-    <>
+    <div id="Home">
       <Box>
         <AppBar>
           <Toolbar>
@@ -48,7 +48,7 @@ export default function Home() {
           <h1>Drifloon Database</h1>
         </Box>
       </Container>
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" sx={{ mt: 4 }}>
         <Box>
           <h2>Quick Links</h2>
           <Link href="/pokedex/national" underline="none">
@@ -169,6 +169,6 @@ export default function Home() {
           </p>
         </Box>
       </Container>
-    </>
+    </div>
   );
 }

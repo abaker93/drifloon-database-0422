@@ -1,19 +1,22 @@
-import React, { useState } from "react";
-
+import * as React from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import ToggleButton from "@mui/material/ToggleButton";
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import List from "@mui/material/List";
+import Divider from "@mui/material/Divider";
+import ListItem from "@mui/material/ListItem";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
 
-import LightModeRoundedIcon from "@mui/icons-material/LightModeRounded";
+import SettingsIcon from "@mui/icons-material/Settings";
+import InboxIcon from "@mui/icons-material/MoveToInbox";
+import MailIcon from "@mui/icons-material/Mail";
 
-export const SettingsDrawer = () => {
-  const [state, setState] = useState(false);
-  const [colorMode, setColorMode] = useState("light");
-
-  const handleColorMode = (event, newColorMode) => {
-    setColorMode(newColorMode);
-  };
+export default function SettingsDrawer() {
+  const [state, setState] = React.useState({
+    settings: false
+  });
 
   const toggleDrawer = (open) => (event) => {
     if (
@@ -23,36 +26,56 @@ export const SettingsDrawer = () => {
       return;
     }
 
-    setState({ ...state, open });
+    setState({ ...state, settings: open });
   };
 
   const list = () => (
     <Box
-      sx={{ width: 250 }}
+      sx={{ width: "auto" }}
       role="presentation"
       onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
     >
       <List>
-        hello world!
-        {/* <ToggleButtonGroup>
-          <ToggleButton value="light" aria-label="light mode">
-            <LightModeRoundedIcon />
-            Light
-          </ToggleButton>
-        </ToggleButtonGroup> */}
+        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+          <ListItem button key={text}>
+            <ListItemIcon>
+              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+            </ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+      <List>
+        {["All mail", "Trash", "Spam"].map((text, index) => (
+          <ListItem button key={text}>
+            <ListItemIcon>
+              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+            </ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
       </List>
     </Box>
   );
 
   return (
     <div>
-      <>
-        <Button onClick={toggleDrawer(true)}>Open</Button>
-        <Drawer open={state} onClose={toggleDrawer(false)}>
-          {list()}
-        </Drawer>
-      </>
+      {["settings"].map((anchor) => (
+        <React.Fragment key="settings">
+          <IconButton onClick={toggleDrawer(true)}>
+            <SettingsIcon />
+          </IconButton>
+          <Drawer
+            anchor="right"
+            open={state[anchor]}
+            onClose={toggleDrawer(false)}
+          >
+            {list(anchor)}
+          </Drawer>
+        </React.Fragment>
+      ))}
     </div>
   );
-};
+}
