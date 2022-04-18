@@ -6,14 +6,7 @@ import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import Drawer from "@mui/material/Drawer";
-import Divider from "@mui/material/Divider";
-import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { CardActionArea } from "@mui/material";
@@ -22,15 +15,11 @@ import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 
 import AppsRoundedIcon from "@mui/icons-material/AppsRounded";
-import SettingsIcon from "@mui/icons-material/Settings";
 import FilterListRoundedIcon from "@mui/icons-material/FilterListRounded";
 import SortRoundedIcon from "@mui/icons-material/SortRounded";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 
 import { GetAllPokemon, url, convertNational } from "../utilities";
 import SettingsDrawer from "../components/SettingsDrawer";
-import TemporaryDrawer from "../components/SettingsDrawer";
 
 export default function Pokedex() {
   const pokemon = GetAllPokemon();
@@ -48,11 +37,9 @@ export default function Pokedex() {
     <>
       <AppBar>
         <Toolbar>
+          <div>Drifloon Database</div>
           <Box sx={{ flexGrow: 1 }} />
-          <IconButton edge="start" aria-label="filter">
-            <FilterListRoundedIcon />
-          </IconButton>
-          <IconButton aria-label="sort">
+          <IconButton edge="start" aria-label="sort">
             <SortRoundedIcon />
           </IconButton>
           <SettingsDrawer />

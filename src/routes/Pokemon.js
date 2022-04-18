@@ -105,11 +105,16 @@ export default function Pokemon() {
               </Stack>
             </Box>
           </Container>
-          <Container maxWidth="xl" sx={{ mt: 5 }}>
-            <Box id="evolution">
-              <Evolution key={poke.id} pokemon={poke} />
-            </Box>
-          </Container>
+          {/* {poke.fields.evolution !== "undefined" ? (
+            <Container maxWidth="xl" sx={{ mt: 5 }}>
+              <Box id="evolution">
+                <Evolution key={poke.id} pokemon={poke} />
+              </Box>
+            </Container>
+          ) : (
+            ""
+          )} */}
+
           <Container maxWidth="xl" sx={{ mt: 5 }}>
             <Box id="weaknesses">
               {typesArray.map((value, index) => {

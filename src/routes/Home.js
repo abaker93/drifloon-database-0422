@@ -75,7 +75,6 @@ export default function Home() {
                 <Chip
                   key={index}
                   label={value}
-                  variant="outline"
                   color="primary"
                   clickable
                   sx={{ mr: 1, mb: 1 }}
