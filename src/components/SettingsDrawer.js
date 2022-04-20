@@ -221,7 +221,6 @@ export default function SettingsDrawer(pokemon) {
                     <Chip key={value} label={value} />
                   </Box>
                 )}
-                // MenuProps={MenuProps}
               >
                 {typesArray.map((type) => (
                   <MenuItem

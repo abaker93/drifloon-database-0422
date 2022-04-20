@@ -16,7 +16,6 @@ import AppsRoundedIcon from "@mui/icons-material/AppsRounded";
 import SettingsIcon from "@mui/icons-material/Settings";
 
 import { generations, typesArray, GetPokemonUpdates, url } from "../utilities";
-import * as color from "../colors";
 
 export default function Home() {
   const pokemon = GetPokemonUpdates();
@@ -52,13 +51,7 @@ export default function Home() {
         <Box>
           <h2>Quick Links</h2>
           <Link href="/pokedex/national" underline="none">
-            <Card
-              className="clickable"
-              sx={{
-                backgroundColor: color.fighting(),
-                color: "white"
-              }}
-            >
+            <Card className="clickable quickLink" data-type-one="fighting">
               <CardActionArea>
                 <CardContent>National Pokédex</CardContent>
               </CardActionArea>

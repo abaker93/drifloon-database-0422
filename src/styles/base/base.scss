@@ -129,6 +129,12 @@ img { max-width: 100%; }
 	}
 
 	&[data-type-one] {
+		&.quickLink .MuiCardContent-root{
+			color: $white;
+			font-size: 20px;
+			padding: 15px 20px;
+		}
+
 		.MuiCardContent-root {
 			padding: 10px 10px 5px; 
 		}

@@ -33,7 +33,6 @@ export default function Pokemon() {
 
   const checkForType2 = (type2) => {
     const checkForType2Results = type2 ? <Chip label={type2} /> : "";
-
     return checkForType2Results;
   };
 

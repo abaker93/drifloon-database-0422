@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { useSearchParams, useParams } from "react-router-dom";
 
 import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
@@ -21,7 +22,12 @@ import { GetAllPokemon, url, convertNational } from "../utilities";
 import SettingsDrawer from "../components/SettingsDrawer";
 
 export default function Pokedex() {
+  console.log();
+  const params = useParams();
   const pokemon = GetAllPokemon();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const URLfilter = new URL(document.location).searchParams.get("filter");
 
   const checkForType2 = (type2) => {
     const checkForType2Results = type2 ? (
@@ -41,7 +47,7 @@ export default function Pokedex() {
           <IconButton edge="start" aria-label="sort">
             <SortRoundedIcon />
           </IconButton>
-          <SettingsDrawer />
+          {/* <SettingsDrawer /> */}
           <Link href="/">
             <IconButton aria-label="home">
               <AppsRoundedIcon />
@@ -58,92 +64,122 @@ export default function Pokedex() {
         <Box>
           <Autocomplete
             freeSolo
-            disablePortal
-            options={["bulbasaur", "ivysaur", "venusaur", "drifloon"]}
-            renderInput={(params) => <TextField {...params} label="Search" />}
+            options={pokemon.map((poke) => poke.fields.name)}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="Search for Pokémon by name or Pokédex number"
+                InputProps={{
+                  ...params.InputProps,
+                  type: "search"
+                }}
+              />
+            )}
+            onChange={(event, value) => {
+              let filter = value;
+              if (filter) {
+                setSearchParams({ filter });
+              } else {
+                setSearchParams({});
+              }
+            }}
           />
         </Box>
       </Container>
       <Container maxWidth="xl" sx={{ mt: 5 }}>
         <Box>
           <Stack spacing={5}>
-            {pokemon.map((poke) => (
-              <Card
-                className="clickable"
-                key={poke.id}
-                data-type-one={poke.fields.type1}
-                data-type-two={poke.fields.type2}
-              >
-                <Link
-                  href={`/pokedex/national/${url(
-                    poke.fields.national,
-                    poke.fields.altNum
-                  )}/`}
-                  underline="none"
+            {pokemon
+              .filter((poke) => {
+                let filter = searchParams.get("filter");
+                if (!filter) return true;
+                let name = poke.fields.name.toLowerCase();
+                let national = poke.fields.national.toString();
+                if (filter >= 0) {
+                  // console.log(poke.fields.name);
+                  return national.includes(filter);
+                } else {
+                  // console.log(poke.fields.name);
+                  return name.includes(filter.toLowerCase());
+                }
+              })
+              .map((poke) => (
+                <Card
+                  className="clickable"
+                  key={poke.id}
+                  data-type-one={poke.fields.type1}
+                  data-type-two={poke.fields.type2}
                 >
-                  <CardActionArea>
-                    <CardContent>
-                      <Stack direction="row" spacing={2}>
-                        <div className="image">
-                          <img
-                            src={poke.fields.artwork[0].url}
-                            alt={poke.fields.name}
-                          />
-                        </div>
-                        <div className="details">
-                          <h3>
-                            <span>
-                              <span>No.</span>
-                              {convertNational(poke.fields.national)}
-                            </span>
-                            {poke.fields.name}
-                          </h3>
-                          <div className="types">
-                            <Chip
-                              data-type={poke.fields.type1}
-                              label={poke.fields.type1}
-                              size="small"
-                              sx={{ mr: 1 }}
+                  <Link
+                    href={`/pokedex/national/${url(
+                      poke.fields.national,
+                      poke.fields.altNum
+                    )}/`}
+                    underline="none"
+                  >
+                    <CardActionArea>
+                      <CardContent>
+                        <Stack direction="row" spacing={2}>
+                          <div className="image">
+                            <img
+                              src={poke.fields.artwork[0].url}
+                              alt={poke.fields.name}
                             />
-                            {checkForType2(poke.fields.type2)}
                           </div>
-                          <div className="stats">
-                            <div>
-                              <h4>HP</h4>
-                              <p>{poke.fields.hp}</p>
+                          <div className="details">
+                            <h3>
+                              <span>
+                                <span>No.</span>
+                                {convertNational(poke.fields.national)}
+                              </span>
+                              {poke.fields.name}
+                            </h3>
+                            <div className="types">
+                              <Chip
+                                data-type={poke.fields.type1}
+                                label={poke.fields.type1}
+                                size="small"
+                                sx={{ mr: 1 }}
+                              />
+                              {checkForType2(poke.fields.type2)}
                             </div>
-                            <div>
-                              <h4>Att</h4>
-                              <p>{poke.fields.hp}</p>
-                            </div>
-                            <div>
-                              <h4>Def</h4>
-                              <p>{poke.fields.hp}</p>
-                            </div>
-                            <div>
-                              <h4>Sp.A</h4>
-                              <p>{poke.fields.hp}</p>
-                            </div>
-                            <div>
-                              <h4>Sp.D</h4>
-                              <p>{poke.fields.hp}</p>
-                            </div>
-                            <div>
-                              <h4>Spd</h4>
-                              <p>{poke.fields.hp}</p>
-                            </div>
-                            <div>
-                              <h4>Total</h4>
-                              <p>{poke.fields.hp}</p>
+                            <div className="stats">
+                              <div>
+                                <h4>HP</h4>
+                                <p>{poke.fields.hp}</p>
+                              </div>
+                              <div>
+                                <h4>Att</h4>
+                                <p>{poke.fields.hp}</p>
+                              </div>
+                              <div>
+                                <h4>Def</h4>
+                                <p>{poke.fields.hp}</p>
+                              </div>
+                              <div>
+                                <h4>Sp.A</h4>
+                                <p>{poke.fields.hp}</p>
+                              </div>
+                              <div>
+                                <h4>Sp.D</h4>
+                                <p>{poke.fields.hp}</p>
+                              </div>
+                              <div>
+                                <h4>Spd</h4>
+                                <p>{poke.fields.hp}</p>
+                              </div>
+                              <div>
+                                <h4>Total</h4>
+                                <p>{poke.fields.hp}</p>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </Stack>
-                    </CardContent>
-                  </CardActionArea>
-                </Link>
-              </Card>
-            ))}
+                        </Stack>
+                      </CardContent>
+                    </CardActionArea>
+                  </Link>
+                </Card>
+              ))}
           </Stack>
         </Box>
       </Container>

@@ -1,14 +1,14 @@
-import React from "react";
+import React, { lazy } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { StyledEngineProvider } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 
 import Home from "./routes/Home";
-import Pokedex from "./routes/Pokedex";
-import Pokemon from "./routes/Pokemon";
 import { theme } from "./theme";
+
+const Pokedex = lazy(() => import("./routes/Pokedex"));
+const Pokemon = lazy(() => import("./routes/Pokemon"));
 
 export default function App() {
   return (
