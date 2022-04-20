@@ -15,7 +15,6 @@ import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 
 import AppsRoundedIcon from "@mui/icons-material/AppsRounded";
-import FilterListRoundedIcon from "@mui/icons-material/FilterListRounded";
 import SortRoundedIcon from "@mui/icons-material/SortRounded";
 
 import { GetAllPokemon, url, convertNational } from "../utilities";
