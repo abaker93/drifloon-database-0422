@@ -4,6 +4,8 @@ import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
@@ -32,12 +34,20 @@ export default function Pokemon() {
   );
 
   const checkForType2 = (type2) => {
-    const checkForType2Results = type2 ? <Chip label={type2} /> : "";
+    const checkForType2Results = type2 ? (
+      <Chip label={type2} data-type={type2} />
+    ) : (
+      ""
+    );
     return checkForType2Results;
   };
 
+  const totalStats = (hp, att, def, spAtt, spDef, spd) => {
+    return hp + att + def + spAtt + spDef + spd;
+  };
+
   return (
-    <>
+    <div id="Pokemon">
       <PokemonSpeedDial />
       <AppBar>
         <Toolbar>
@@ -58,7 +68,11 @@ export default function Pokemon() {
         </Toolbar>
       </AppBar>
       {pokemon.map((poke) => (
-        <Box key={poke.id}>
+        <Box
+          key={poke.id}
+          data-type-one={poke.fields.type1}
+          data-type-two={poke.fields.type2}
+        >
           <Box className="pokemonHeader" sx={{ mt: 10 }}>
             <p>{poke.fields.japaneseKata}</p>
             <img src={poke.fields.artwork[0].url} alt={poke.fields.name} />
@@ -75,20 +89,20 @@ export default function Pokemon() {
               <p>{poke.fields.category}</p>
               <div className="types">
                 <Chip
-                  className={poke.fields.type1}
                   label={poke.fields.type1}
                   sx={{ mr: 1 }}
+                  data-type={poke.fields.type1}
                 />
                 {checkForType2(poke.fields.type2)}
               </div>
             </Box>
           </Container>
-          {/* <Container maxWidth="xl" sx={{ mt: 5 }}>
+          <Container maxWidth="xl" sx={{ mt: 3 }}>
             <Box id="altForms">
-              <AltFormNav national={poke.fields.national} />
+              <AltFormNav pokemon={poke} />
             </Box>
-          </Container> */}
-          <Container maxWidth="xl" sx={{ mt: 5 }}>
+          </Container>
+          <Container maxWidth="xl" sx={{ mt: 3 }}>
             <Box id="stats">
               <Statbar stat="hp" label="HP" num={poke.fields.hp} />
               <Statbar stat="att" label="Attack" num={poke.fields.att} />
@@ -96,12 +110,34 @@ export default function Pokemon() {
               <Statbar stat="spAtt" label="Sp.Att" num={poke.fields.spAtt} />
               <Statbar stat="spDef" label="Sp.Def" num={poke.fields.spDef} />
               <Statbar stat="spd" label="Speed" num={poke.fields.spd} />
+              <div className="stat total">
+                <p className="statLabel">Total</p>
+                <p className="statNum">
+                  {totalStats(
+                    poke.fields.hp,
+                    poke.fields.att,
+                    poke.fields.def,
+                    poke.fields.spAtt,
+                    poke.fields.spDef,
+                    poke.fields.spd
+                  )}
+                </p>
+              </div>
 
-              <Stack direction="row" spacing={1}>
-                <Chip label="Base" clickable />
-                <Chip label="Lvl 50" clickable />
-                <Chip label="Lvl 100" clickable />
-              </Stack>
+              <Tabs
+                // value={value}
+                // onChange={handleStatTabChange}
+                aria-label="stat tabs"
+                sx={{ mt: 2 }}
+              >
+                <Tab>
+                  <Chip label="Base" clickable />
+                </Tab>
+                {/* <Chip label="Lvl 50" clickable /> */}
+                <Tab>
+                  <Chip label="Lvl 100" clickable />
+                </Tab>
+              </Tabs>
             </Box>
           </Container>
           {/* {poke.fields.evolution !== "undefined" ? (
@@ -219,6 +255,6 @@ export default function Pokemon() {
           </Container>
         </Box>
       ))}
-    </>
+    </div>
   );
 }

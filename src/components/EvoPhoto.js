@@ -8,7 +8,6 @@ import { GetPokemonByRecord } from "../utilities";
 
 export const EvoPhoto = (pokeId) => {
   const pokemon = GetPokemonByRecord(pokeId.pokemon);
-  // console.log(pokemon);
   return (
     <>
       {pokemon.map((poke) => (

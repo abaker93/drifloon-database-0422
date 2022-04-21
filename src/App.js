@@ -4,9 +4,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { StyledEngineProvider } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/material/styles";
 
-import Home from "./routes/Home";
 import { theme } from "./theme";
 
+const Home = lazy(() => import("./routes/Home"));
 const Pokedex = lazy(() => import("./routes/Pokedex"));
 const Pokemon = lazy(() => import("./routes/Pokemon"));
 

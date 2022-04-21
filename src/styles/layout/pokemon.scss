@@ -1,0 +1,114 @@
+@import '../utilities/variables/colors';
+@import '../utilities/variables/gradients';
+@import '../utilities/variables/variables';
+
+#Pokemon {
+
+  @each $type1, $types in $doubleTypes {
+		[data-type-one="#{$type1}"] {
+			@each $type2, $grad in $types {
+        @if($type2 == '') {
+          .statBarFill{ background: $grad; }
+        } @else {
+          &[data-type-two="#{$type2}"] {
+            .statBarFill{ background: $grad; }
+          }
+        }
+      }
+		}
+  }
+
+
+  @each $type1, $types in $doubleTypes {
+		&[data-type-one="#{$type1}"] {
+			@each $type2, $grad in $types {
+				@if($type2 == '') {
+					background: $grad;
+				} @else {
+					&[data-type-two="#{$type2}"] {
+						background: $grad;
+					}
+				}
+			}
+		}
+	}
+  
+  h1 {
+    font-size: 30px;
+    margin-bottom: 7px;
+
+    span {
+      margin-right: 5px;
+      font-size: 18px;
+      color: $textLight;
+      
+      span {
+        margin-right: 3px;
+        font-size: 14px;
+      }
+    }
+
+    + p {
+      margin-bottom: 9px;
+      color: $textLight;
+    }
+  }
+
+  #basicInfo {
+    text-align: center;
+  }
+
+  #stats {
+    .stat {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 5px;
+
+      .statLabel { flex: 0 50px; }
+
+      .statNum {
+        flex: 0 25px;
+        text-align: center;
+      }
+
+      .statBar {
+        flex: auto;
+        height: 7px;
+        background-color: $grayLight;
+        border-radius: 50px;
+
+        .statBarFill {
+          height: 7px;
+          border-radius: 50px;
+        }
+      }
+
+      &.total p {
+        font-weight: 600;
+      }
+    }
+  }
+
+  #weaknesses {
+    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(9, min-content);
+    row-gap: 10px;
+
+    .MuiChip-root {
+      flex-direction: column;
+      padding: 6px;
+
+      &::before {
+        margin-right: 0;
+        margin-bottom: 6px;
+      }
+
+      .MuiChip-label {
+        font-size: 10px;
+        font-weight: 700;
+      }
+    }
+  }
+}

@@ -126,7 +126,7 @@ export function GetAltForms(pokemonId) {
     base("nationalDex")
       .select({
         view: "master",
-        filterByFormula: `AND(national = ${pokemonId}, altNum != 0)`
+        filterByFormula: `AND(national = ${pokemonId})`
       })
       .eachPage((records, fetchNextPage) => {
         setPokemon((rec) => [...rec, ...records]);

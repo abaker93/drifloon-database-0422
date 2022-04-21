@@ -195,3 +195,26 @@ img { max-width: 100%; }
 	}
 	&.short .image img { top: -20px; }
 }
+
+/*********************************************
+**********************************************
+		 MUI TAB
+**********************************************
+*********************************************/
+
+.MuiTabs-root {
+	.MuiTab-root {
+		width: min-content;
+	}
+
+	@each $type in $single-types {
+		&[data-type="#{nth($type, 1)}"]{
+			.Mui-selected {
+				color: nth($type, 2);
+			}
+			.MuiTabs-indicator {
+				background-color: #{nth($type, 2)};
+			}
+		}
+	}
+}

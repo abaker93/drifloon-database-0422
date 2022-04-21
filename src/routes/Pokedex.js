@@ -96,10 +96,8 @@ export default function Pokedex() {
                 let name = poke.fields.name.toLowerCase();
                 let national = poke.fields.national.toString();
                 if (filter >= 0) {
-                  // console.log(poke.fields.name);
                   return national.includes(filter);
                 } else {
-                  // console.log(poke.fields.name);
                   return name.includes(filter.toLowerCase());
                 }
               })

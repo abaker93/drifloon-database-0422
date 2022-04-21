@@ -56,7 +56,7 @@ export const Weakness = (types) => {
   return (
     <>
       <Chip
-        className={types.attType}
+        data-type={types.attType}
         label={calcWeakness(types.attType, types.type1, types.type2)}
       />
     </>
