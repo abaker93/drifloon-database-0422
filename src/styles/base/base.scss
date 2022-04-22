@@ -97,10 +97,20 @@ img { max-width: 100%; }
 	position: relative;
 	left:0;
 	top: 0;
+
+	&.dense >div {
+		padding: 10px 18px;
+	}
 	
 	&.clickable:hover {
 		left: 10px;
 		top: -10px;
+		box-shadow:
+			rgba($white, 0.4) -5px 5px,
+			rgba($white, 0.3) -10px 10px,
+			rgba($white, 0.2) -15px 15px,
+			rgba($white, 0.1) -20px 20px,
+			rgba($white, 0.05) -25px 25px;
 	}
 
 	@each $type, $color in $single-types {

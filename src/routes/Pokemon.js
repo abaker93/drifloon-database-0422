@@ -73,7 +73,7 @@ export default function Pokemon() {
           data-type-one={poke.fields.type1}
           data-type-two={poke.fields.type2}
         >
-          <Box className="pokemonHeader" sx={{ mt: 10 }}>
+          <Box className="pokemonHeader">
             <p>{poke.fields.japaneseKata}</p>
             <img src={poke.fields.artwork[0].url} alt={poke.fields.name} />
           </Box>
@@ -203,11 +203,11 @@ export default function Pokemon() {
           <Container maxWidth="xl" sx={{ mt: 5 }}>
             <Box id="breeding">
               <Box>
-                <h4>Egg Groups</h4>
+                <h3>Egg Groups</h3>
                 <p>{poke.fields.eggGroups}</p>
               </Box>
               <Box>
-                <h4>Egg Cycles</h4>
+                <h3>Egg Cycles</h3>
                 <p>{poke.fields.eggCycles}</p>
               </Box>
             </Box>
@@ -215,7 +215,7 @@ export default function Pokemon() {
           <Container maxWidth="xl" sx={{ mt: 5 }}>
             <Box id="more">
               <Box>
-                <h4>Gender Ratio</h4>
+                <h3>Gender Ratio</h3>
                 <p>
                   <MaleRoundedIcon />
                   {poke.fields.MGendRatio}
@@ -226,33 +226,33 @@ export default function Pokemon() {
                 </p>
               </Box>
               <Box>
-                <h4>Height</h4>
+                <h3>Height</h3>
                 <p>{poke.fields.height} cm</p>
               </Box>
               <Box>
-                <h4>Weight</h4>
+                <h3>Weight</h3>
                 <p>{poke.fields.weight} kg</p>
               </Box>
               <Box>
-                <h4>EV Yield</h4>
+                <h3>EV Yield</h3>
                 {poke.fields.evYield.map((ev, index) => (
                   <p key={index}>{ev}</p>
                 ))}
               </Box>
               <Box>
-                <h4>Catch Rate</h4>
+                <h3>Catch Rate</h3>
                 <p>{poke.fields.catchRate}</p>
               </Box>
               <Box>
-                <h4>Base Friendship</h4>
+                <h3>Base Friendship</h3>
                 <p>{poke.fields.baseFriendship}</p>
               </Box>
               <Box>
-                <h4>Base Experience</h4>
+                <h3>Base Experience</h3>
                 <p>{poke.fields.baseExperience}</p>
               </Box>
               <Box>
-                <h4>Growth Rate</h4>
+                <h3>Growth Rate</h3>
                 <p>{poke.fields.growthRate}</p>
               </Box>
             </Box>
