@@ -1,9 +1,5 @@
 import React from "react";
 
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-
 import { GetPokemonByRecord } from "../utilities";
 
 export const EvoPhoto = (pokeId) => {
@@ -11,11 +7,13 @@ export const EvoPhoto = (pokeId) => {
   return (
     <>
       {pokemon.map((poke) => (
-        <Card key={poke.id}>
-          <CardContent>
+        <div key={poke.id} className="evoBlock evoImg">
+          {poke.fields.artwork ? (
             <img src={poke.fields.artwork[0].url} alt={poke.fields.name} />
-          </CardContent>
-        </Card>
+          ) : (
+            ""
+          )}
+        </div>
       ))}
     </>
   );

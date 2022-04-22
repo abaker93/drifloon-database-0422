@@ -77,7 +77,7 @@ export default function Pokemon() {
             <p>{poke.fields.japaneseKata}</p>
             <img src={poke.fields.artwork[0].url} alt={poke.fields.name} />
           </Box>
-          <Container maxWidth="xl" sx={{ mt: 5 }}>
+          <Container maxWidth="xl" sx={{ mt: 5, mb: 3 }}>
             <Box id="basicInfo">
               <h1>
                 <span>
@@ -97,12 +97,16 @@ export default function Pokemon() {
               </div>
             </Box>
           </Container>
-          <Container maxWidth="xl" sx={{ mt: 3 }}>
-            <Box id="altForms">
-              <AltFormNav pokemon={poke} />
-            </Box>
-          </Container>
-          <Container maxWidth="xl" sx={{ mt: 3 }}>
+          {poke.fields.altForms ? (
+            <Container maxWidth="xl">
+              <Box id="altForms">
+                <AltFormNav pokemon={poke} />
+              </Box>
+            </Container>
+          ) : (
+            ""
+          )}
+          <Container maxWidth="xl" sx={{ pt: 3 }}>
             <Box id="stats">
               <Statbar stat="hp" label="HP" num={poke.fields.hp} />
               <Statbar stat="att" label="Attack" num={poke.fields.att} />
@@ -124,23 +128,23 @@ export default function Pokemon() {
                 </p>
               </div>
 
-              <Tabs
-                // value={value}
-                // onChange={handleStatTabChange}
+              {/* <Tabs
+                value={value}
+                onChange={handleStatTabChange}
                 aria-label="stat tabs"
                 sx={{ mt: 2 }}
               >
                 <Tab>
                   <Chip label="Base" clickable />
                 </Tab>
-                {/* <Chip label="Lvl 50" clickable /> */}
+                <Chip label="Lvl 50" clickable />
                 <Tab>
                   <Chip label="Lvl 100" clickable />
                 </Tab>
-              </Tabs>
+              </Tabs> */}
             </Box>
           </Container>
-          {/* {poke.fields.evolution !== "undefined" ? (
+          {poke.fields.evolution ? (
             <Container maxWidth="xl" sx={{ mt: 5 }}>
               <Box id="evolution">
                 <Evolution key={poke.id} pokemon={poke} />
@@ -148,7 +152,7 @@ export default function Pokemon() {
             </Container>
           ) : (
             ""
-          )} */}
+          )}
 
           <Container maxWidth="xl" sx={{ mt: 5 }}>
             <Box id="weaknesses">

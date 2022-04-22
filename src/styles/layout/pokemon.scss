@@ -4,6 +4,12 @@
 
 #Pokemon {
 
+  @each $type in $single-types {
+    [data-type-one="#{nth($type, 1)}"] {
+      .evoBlock.evoCond div { border-top-color: nth($type, 2); }
+    }
+  }
+
   @each $type1, $types in $doubleTypes {
 		[data-type-one="#{$type1}"] {
 			@each $type2, $grad in $types {
@@ -18,21 +24,6 @@
 		}
   }
 
-
-  @each $type1, $types in $doubleTypes {
-		&[data-type-one="#{$type1}"] {
-			@each $type2, $grad in $types {
-				@if($type2 == '') {
-					background: $grad;
-				} @else {
-					&[data-type-two="#{$type2}"] {
-						background: $grad;
-					}
-				}
-			}
-		}
-	}
-  
   h1 {
     font-size: 30px;
     margin-bottom: 7px;
@@ -60,20 +51,15 @@
 
   #stats {
     .stat {
-      display: flex;
-      gap: 10px;
+      display: grid;
+      grid-template-columns: 50px 25px auto;
+      column-gap: 10px;
       align-items: center;
       margin-bottom: 5px;
 
-      .statLabel { flex: 0 50px; }
-
-      .statNum {
-        flex: 0 25px;
-        text-align: center;
-      }
+      .statNum { text-align: center; }
 
       .statBar {
-        flex: auto;
         height: 7px;
         background-color: $grayLight;
         border-radius: 50px;
@@ -86,6 +72,56 @@
 
       &.total p {
         font-weight: 600;
+      }
+    }
+  }
+
+  #evolution {
+    overflow-x: auto;
+    max-width: fit-content;
+    margin: 0 auto;
+
+    >div {
+      display: grid;
+      grid-auto-flow: column;
+      grid-template-columns:
+        repeat(auto-fit, minmax(50px, 150px) minmax(80px, 120px) minmax(50px, 150px) minmax(80px, 120px) minmax(50px, 150px) minmax(80px, 120px) minmax(50px, 150px));
+      column-gap: 20px;
+      
+      >div {
+        height: 100%;
+        display: grid;
+        grid-auto-flow: row;
+        grid-auto-rows: 1fr;
+        grid-template-columns: 1fr;
+        align-content: space-around;
+        align-items: center;
+
+        .evoBlock{
+          &.evoCond {
+            // min-width: 80px;
+            // width: auto;
+            // max-width: 120px;
+            text-align: center;
+
+            >div {
+              width: fit-content;
+              border-top-width: 1px;
+              border-top-style: solid;
+              margin: 0 auto;
+
+              >div { padding: 7px 10px; }
+            }
+          }
+
+          &.evoImg {
+            // min-width: 70px;
+            // width: auto;
+            // max-width: 150px;
+
+            >img { width: 100%; }
+          }
+        }
       }
     }
   }

@@ -1,9 +1,5 @@
 import React from "react";
 
-import Stack from "@mui/material/Stack";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-
 import { GetEvolutions } from "../utilities";
 import { EvoPhoto } from "./EvoPhoto";
 
@@ -18,6 +14,7 @@ export const Evolution = (poke) => {
         for (let i = 0; i < lvl.length; i++) {
           if (lvl[i] === "_") {
             if (cond[i] === "_") {
+              evoCond.push("");
             } else {
               evoCond.push(cond[i]);
             }
@@ -25,7 +22,7 @@ export const Evolution = (poke) => {
             if (cond[i] === "_") {
               evoCond.push("lvl " + lvl[i]);
             } else {
-              evoCond.push("lvl " + lvl[i] + " - " + cond[i]);
+              evoCond.push("lvl " + lvl[i] + ", " + cond[i]);
             }
           }
         }
@@ -41,6 +38,7 @@ export const Evolution = (poke) => {
       if (cond) {
         for (let i = 0; i < cond.length; i++) {
           if (cond[i] === "_") {
+            evoCond.push("");
           } else {
             evoCond.push(cond[i]);
           }
@@ -48,79 +46,122 @@ export const Evolution = (poke) => {
       }
     }
 
+    console.log(evoCond);
+
     return evoCond;
   };
 
   return (
     <>
       {evolutions.map((evo) => (
-        <Stack key={evo.id} direction="row" spacing={1}>
-          <Stack spacing={1}>
-            {evo.fields.evo1
-              ? evo.fields.evo1.map((value, index) =>
-                  value !== "recCUXMOJy5H3QaO9" ? (
-                    <EvoPhoto key={index} pokemon={value} />
-                  ) : (
-                    ""
-                  )
+        <div key={evo.id}>
+          {evo.fields.evo1 ? (
+            <div>
+              {evo.fields.evo1.map((value, index) =>
+                value !== "recCUXMOJy5H3QaO9" ? (
+                  <EvoPhoto key={index} pokemon={value} />
+                ) : (
+                  ""
                 )
-              : ""}
-          </Stack>
-          <Stack spacing={1}>
-            {evoConditions(evo.fields.lvl1, evo.fields.cond1).map((cond) => (
-              <Card>
-                <CardContent>{cond}</CardContent>
-              </Card>
-            ))}
-          </Stack>
-          <Stack spacing={1}>
-            {evo.fields.evo2
-              ? evo.fields.evo2.map((value, index) =>
-                  value !== "recCUXMOJy5H3QaO9" ? (
-                    <EvoPhoto key={index} pokemon={value} />
+              )}
+            </div>
+          ) : (
+            ""
+          )}
+          {evo.fields.lvl1 || evo.fields.cond1 ? (
+            <div>
+              {evoConditions(evo.fields.lvl1, evo.fields.cond1).map(
+                (cond, index) =>
+                  cond !== "" ? (
+                    <div key={index} className="evoBlock evoCond">
+                      <div>
+                        <div>{cond}</div>
+                      </div>
+                    </div>
                   ) : (
-                    ""
+                    <div key={index} className="evoBlock evoCond"></div>
                   )
+              )}
+            </div>
+          ) : (
+            ""
+          )}
+          {evo.fields.evo2 ? (
+            <div>
+              {evo.fields.evo2.map((value, index) =>
+                value !== "recCUXMOJy5H3QaO9" ? (
+                  <EvoPhoto key={index} pokemon={value} />
+                ) : (
+                  ""
                 )
-              : ""}
-          </Stack>
-          <Stack spacing={1}>
-            {evoConditions(evo.fields.lvl2, evo.fields.cond2).map((cond) => (
-              <Card>
-                <CardContent>{cond}</CardContent>
-              </Card>
-            ))}
-          </Stack>
-          <Stack spacing={1}>
-            {evo.fields.evo3
-              ? evo.fields.evo3.map((value, index) =>
-                  value !== "recCUXMOJy5H3QaO9" ? (
-                    <EvoPhoto key={index} pokemon={value} />
+              )}
+            </div>
+          ) : (
+            ""
+          )}
+          {evo.fields.lvl2 || evo.fields.cond2 ? (
+            <div>
+              {evoConditions(evo.fields.lvl2, evo.fields.cond2).map(
+                (cond, index) =>
+                  cond !== "" ? (
+                    <div key={index} className="evoBlock evoCond">
+                      <div>
+                        <div>{cond}</div>
+                      </div>
+                    </div>
                   ) : (
-                    ""
+                    <div key={index} className="evoBlock evoCond"></div>
                   )
+              )}
+            </div>
+          ) : (
+            ""
+          )}
+          {evo.fields.evo3 ? (
+            <div>
+              {evo.fields.evo3.map((value, index) =>
+                value !== "recCUXMOJy5H3QaO9" ? (
+                  <EvoPhoto key={index} pokemon={value} />
+                ) : (
+                  ""
                 )
-              : ""}
-          </Stack>
-          <Stack spacing={1}>
-            {evoConditions(evo.fields.lvl3, evo.fields.cond3).map((cond) => (
-              <Card>
-                <CardContent>{cond}</CardContent>
-              </Card>
-            ))}
-          </Stack>
-          <Stack spacing={1}>
-            {evo.fields.evo4
-              ? evo.fields.evo4.map((value, index) =>
-                  value !== "recCUXMOJy5H3QaO9" ? (
-                    <EvoPhoto key={index} pokemon={value} />
+              )}
+            </div>
+          ) : (
+            ""
+          )}
+          {evo.fields.lvl3 || evo.fields.cond3 ? (
+            <div>
+              {evoConditions(evo.fields.lvl3, evo.fields.cond3).map(
+                (cond, index) =>
+                  cond !== "" ? (
+                    <div key={index} className="evoBlock evoCond">
+                      <div>
+                        <div>{cond}</div>
+                      </div>
+                    </div>
                   ) : (
-                    ""
+                    <div key={index} className="evoBlock evoCond"></div>
                   )
+              )}
+            </div>
+          ) : (
+            ""
+          )}
+          {evo.fields.evo4 ? (
+            <div>
+              {evo.fields.evo4.map((value, index) =>
+                value !== "recCUXMOJy5H3QaO9" ? (
+                  <EvoPhoto key={index} pokemon={value} />
+                ) : (
+                  <div className="evoBlock evoPhoto"></div>
                 )
-              : ""}
-          </Stack>
-        </Stack>
+              )}
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
       ))}
     </>
   );
