@@ -113,6 +113,11 @@ img { max-width: 100%; }
 			rgba($white, 0.05) -25px 25px;
 	}
 
+	&.dense.clickable:hover {
+		left: 7px;
+		top: -7px;
+	}
+
 	@each $type, $color in $single-types {
 		&[data-type-one="#{$type}"].clickable:hover {
 			box-shadow:

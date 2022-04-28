@@ -48,7 +48,10 @@ export default function Pokemon() {
 
   return (
     <div id="Pokemon">
+      {/***** SPEED DIAL *****/}
       <PokemonSpeedDial />
+
+      {/***** APP BAR *****/}
       <AppBar>
         <Toolbar>
           <Link href="/pokedex/national">
@@ -67,16 +70,23 @@ export default function Pokemon() {
           </Link>
         </Toolbar>
       </AppBar>
+
+      {/*******************************************
+					POKEMON START
+			*******************************************/}
       {pokemon.map((poke) => (
         <Box
           key={poke.id}
           data-type-one={poke.fields.type1}
           data-type-two={poke.fields.type2}
         >
+          {/***** HEADER *****/}
           <Box className="pokemonHeader">
             <p>{poke.fields.japaneseKata}</p>
             <img src={poke.fields.artwork[0].url} alt={poke.fields.name} />
           </Box>
+
+          {/***** BASIC INFO *****/}
           <Container maxWidth="xl" sx={{ mt: 5, mb: 3 }}>
             <Box id="basicInfo">
               <h1>
@@ -97,6 +107,8 @@ export default function Pokemon() {
               </div>
             </Box>
           </Container>
+
+          {/***** ALT FORMS *****/}
           {poke.fields.altForms ? (
             <Container maxWidth="xl">
               <Box id="altForms">
@@ -106,6 +118,8 @@ export default function Pokemon() {
           ) : (
             ""
           )}
+
+          {/***** STATS *****/}
           <Container maxWidth="xl" sx={{ pt: 3 }}>
             <Box id="stats">
               <Statbar stat="hp" label="HP" num={poke.fields.hp} />
@@ -129,21 +143,23 @@ export default function Pokemon() {
               </div>
 
               {/* <Tabs
-                value={value}
-                onChange={handleStatTabChange}
-                aria-label="stat tabs"
-                sx={{ mt: 2 }}
-              >
-                <Tab>
-                  <Chip label="Base" clickable />
-                </Tab>
-                <Chip label="Lvl 50" clickable />
-                <Tab>
-                  <Chip label="Lvl 100" clickable />
-                </Tab>
-              </Tabs> */}
+								value={value}
+								onChange={handleStatTabChange}
+								aria-label="stat tabs"
+								sx={{ mt: 2 }}
+							>
+								<Tab>
+									<Chip label="Base" clickable />
+								</Tab>
+								<Chip label="Lvl 50" clickable />
+								<Tab>
+									<Chip label="Lvl 100" clickable />
+								</Tab>
+							</Tabs> */}
             </Box>
           </Container>
+
+          {/***** EVOLUTION *****/}
           {poke.fields.evolution ? (
             <Container maxWidth="xl" sx={{ mt: 5 }}>
               <Box id="evolution">
@@ -154,6 +170,7 @@ export default function Pokemon() {
             ""
           )}
 
+          {/***** WEAKNESSES *****/}
           <Container maxWidth="xl" sx={{ mt: 5 }}>
             <Box id="weaknesses">
               {typesArray.map((value, index) => {
@@ -168,11 +185,15 @@ export default function Pokemon() {
               })}
             </Box>
           </Container>
+
+          {/***** ABILITIES *****/}
           <Container maxWidth="xl" sx={{ mt: 5 }}>
             <Box id="abilities">
               <Abilities key={poke.id} pokemon={poke} />
             </Box>
           </Container>
+
+          {/***** NAME TRANSLATIONS *****/}
           <Container maxWidth="xl" sx={{ mt: 5 }}>
             <Box id="name">
               <Box>
@@ -200,6 +221,8 @@ export default function Pokemon() {
               </Box>
             </Box>
           </Container>
+
+          {/***** BREEDING *****/}
           <Container maxWidth="xl" sx={{ mt: 5 }}>
             <Box id="breeding">
               <Box>
@@ -212,10 +235,20 @@ export default function Pokemon() {
               </Box>
             </Box>
           </Container>
+
+          {/***** MORE INFO *****/}
           <Container maxWidth="xl" sx={{ mt: 5 }}>
             <Box id="more">
               <Box>
                 <h3>Gender Ratio</h3>
+                <div
+                  className="genderPie"
+                  style={{
+                    height: 50,
+                    width: 50,
+                    backgroundImage: `conic-gradient(hsl(356, 92%, 76%) calc(${poke.fields.FgendRatio} * 100), gold 0)`
+                  }}
+                />
                 <p>
                   <MaleRoundedIcon />
                   {poke.fields.MGendRatio}
