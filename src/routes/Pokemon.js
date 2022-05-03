@@ -4,19 +4,15 @@ import PropTypes from "prop-types";
 import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import Stack from "@mui/material/Stack";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-// import TabPanel from "@mui/material/TabPanel";
 import TabsUnstyled from "@mui/base/TabsUnstyled";
 import TabsListUnstyled from "@mui/base/TabsListUnstyled";
 import TabPanelUnstyled from "@mui/base/TabPanelUnstyled";
 import TabUnstyled from "@mui/base/TabUnstyled";
-import ListItem from "@mui/material/ListItem";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Chip from "@mui/material/Chip";
+import Divider from "@mui/material/Divider";
 
 import AppsRoundedIcon from "@mui/icons-material/AppsRounded";
 import SettingsIcon from "@mui/icons-material/Settings";
@@ -51,41 +47,6 @@ export default function Pokemon() {
 
   const totalStats = (hp, att, def, spAtt, spDef, spd) => {
     return hp + att + def + spAtt + spDef + spd;
-  };
-
-  function TabPanel(props) {
-    const { children, value, index, ...other } = props;
-
-    return (
-      <div
-        role="tabpanel"
-        hidden={value !== index}
-        id={`generation-tabpanel-${index}`}
-        aria-labelledby={`generation-tabpanel-${index}`}
-        {...other}
-      >
-        {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
-      </div>
-    );
-  }
-
-  TabPanel.protoTypes = {
-    children: PropTypes.node,
-    index: PropTypes.number.isRequired,
-    value: PropTypes.number.isRequired
-  };
-
-  function a11yProps(index) {
-    return {
-      id: `generation-tab-${index}`,
-      "aria-controls": `generation-tabpanel-${index}`
-    };
-  }
-
-  const [value, setValue] = useState(0);
-
-  const handleGenTabChange = (event, newValue) => {
-    setValue(newValue);
   };
 
   return (
@@ -253,7 +214,6 @@ export default function Pokemon() {
           {/***** MORE INFO *****/}
           <Container maxWidth="xl" sx={{ mt: 5 }}>
             <Box id="more">
-              <h2>More Info</h2>
               <Box className="gendAndSize">
                 <Box id="gendRatio">
                   <h3>Gender Ratio</h3>
@@ -307,65 +267,340 @@ export default function Pokemon() {
             </Box>
           </Container>
 
-          {/***** GENERATION SPECIFIC INFO *****/}
-          <Container maxWidth="xl" sx={{ mt: 5 }}>
-            <TabsUnstyled defaultValue={0}>
-              <TabsListUnstyled>
-                <TabUnstyled>
-                  <Chip label="one" />
-                </TabUnstyled>
-                <TabUnstyled>Two</TabUnstyled>
-                <TabUnstyled>Three</TabUnstyled>
-              </TabsListUnstyled>
-              <TabPanelUnstyled value={0}>First page</TabPanelUnstyled>
-              <TabPanelUnstyled value={1}>Second page</TabPanelUnstyled>
-              <TabPanelUnstyled value={2}>Third page</TabPanelUnstyled>
-            </TabsUnstyled>
-            {/* <Tabs
-              value={value}
-              onChange={handleGenTabChange}
-              variant="scrollable"
-              scrollButtons="auto"
-              aria-label="generation tabs"
-            >
-              <Tab label="Gen I" {...a11yProps(0)} clickable />
-              <Tab label="Gen II" {...a11yProps(1)} clickable />
-              <Tab label="Gen III" {...a11yProps(2)} clickable />
-              <Tab label="Gen IV" {...a11yProps(3)} clickable />
-              <Tab label="Gen V" {...a11yProps(4)} clickable />
-              <Tab label="Gen VI" {...a11yProps(5)} clickable />
-              <Tab label="Gen VII" {...a11yProps(6)} clickable />
-              <Tab label="Gen VIII" {...a11yProps(7)} clickable />
-              <Tab label="Gen IX" {...a11yProps(8)} clickable />
-            </Tabs>
+          <Divider sx={{ mt: 5 }} />
 
-            <TabPanel value={value} index={0}>
-              Panel 1
-            </TabPanel>
-            <TabPanel value={value} index={1}>
-              Panel 2
-            </TabPanel>
-            <TabPanel value={value} index={2}>
-              Panel 3
-            </TabPanel>
-            <TabPanel value={value} index={3}>
-              Panel 4
-            </TabPanel>
-            <TabPanel value={value} index={4}>
-              Panel 5
-            </TabPanel>
-            <TabPanel value={value} index={5}>
-              Panel 6
-            </TabPanel>
-            <TabPanel value={value} index={6}>
-              Panel 7
-            </TabPanel>
-            <TabPanel value={value} index={7}>
-              Panel 8
-            </TabPanel>
-            <TabPanel value={value} index={8}>
-              Panel 9
-            </TabPanel> */}
+          {/***** GENERATION SPECIFIC INFO *****/}
+          <Container
+            maxWidth="xl"
+            sx={{ mt: 5, pt: 2, pb: 2, background: "#EEEEEE" }}
+          >
+            <Box id="genInfo">
+              <TabsUnstyled defaultValue={0}>
+                <TabsListUnstyled className="chipTabs">
+                  <TabUnstyled>
+                    <Chip label="Gen I" clickable />
+                  </TabUnstyled>
+                  <TabUnstyled>
+                    <Chip label="Gen II" clickable />
+                  </TabUnstyled>
+                  <TabUnstyled>
+                    <Chip label="Gen III" clickable />
+                  </TabUnstyled>
+                  <TabUnstyled>
+                    <Chip label="Gen IV" clickable />
+                  </TabUnstyled>
+                  <TabUnstyled>
+                    <Chip label="Gen V" clickable />
+                  </TabUnstyled>
+                  <TabUnstyled>
+                    <Chip label="Gen VI" clickable />
+                  </TabUnstyled>
+                  <TabUnstyled>
+                    <Chip label="Gen VII" clickable />
+                  </TabUnstyled>
+                  <TabUnstyled>
+                    <Chip label="Gen VIII" clickable />
+                  </TabUnstyled>
+                  <TabUnstyled>
+                    <Chip label="Gen IX" clickable />
+                  </TabUnstyled>
+                </TabsListUnstyled>
+                <TabPanelUnstyled value={0}>
+                  <Box>
+                    <h2>Pokédex Entries</h2>
+                    <h3 className="red">Red</h3>
+                    <p>{poke.fields.redText}</p>
+                    <Divider />
+                    <h3 className="blue">Blue</h3>
+                    <p>{poke.fields.blueText}</p>
+                    <Divider />
+                    <h3 className="yellow">Yellow</h3>
+                    <p>{poke.fields.yellowText}</p>
+                  </Box>
+                  <Box sx={{ mt: 5 }}>
+                    <h2>Where to Find {poke.fields.name}</h2>
+                    <h3 className="red">Red</h3>
+                    <Chip label={poke.fields.redLocations} />
+                    <Divider />
+                    <h3 className="blue">Blue</h3>
+                    <Chip label={poke.fields.blueLocations} />
+                    <Divider />
+                    <h3 className="yellow">Yellow</h3>
+                    <Chip label={poke.fields.yellowLocations} />
+                  </Box>
+                  <Box sx={{ mt: 5 }}>
+                    <h2>Moves</h2>
+                    {poke.fields.moves.map((move, index) => (
+                      <p key={index}>{move}</p>
+                    ))}
+                  </Box>
+                </TabPanelUnstyled>
+                <TabPanelUnstyled value={1}>
+                  <Box>
+                    <h2>Pokédex Entries</h2>
+                    <h3 className="gold">Gold</h3>
+                    <p>{poke.fields.goldText}</p>
+                    <Divider />
+                    <h3 className="silver">Silver</h3>
+                    <p>{poke.fields.silverText}</p>
+                    <Divider />
+                    <h3 className="crystal">Crystal</h3>
+                    <p>{poke.fields.crystalText}</p>
+                  </Box>
+                  <Box sx={{ mt: 5 }}>
+                    <h2>Where to Find {poke.fields.name}</h2>
+                    <h3 className="gold">Gold</h3>
+                    <Chip label={poke.fields.goldLocations} />
+                    <Divider />
+                    <h3 className="silver">Silver</h3>
+                    <Chip label={poke.fields.silverLocations} />
+                    <Divider />
+                    <h3 className="crystal">Crystal</h3>
+                    <Chip label={poke.fields.crystalLocations} />
+                  </Box>
+                  <Box sx={{ mt: 5 }}>
+                    <h2>Moves</h2>
+                    {poke.fields.moves.map((move, index) => (
+                      <p key={index}>{move}</p>
+                    ))}
+                  </Box>
+                </TabPanelUnstyled>
+                <TabPanelUnstyled value={2}>
+                  <Box>
+                    <h2>Pokédex Entries</h2>
+                    <h3 className="ruby">Ruby</h3>
+                    <p>{poke.fields.rubyText}</p>
+                    <Divider />
+                    <h3 className="sapphire">Sapphire</h3>
+                    <p>{poke.fields.sapphireText}</p>
+                    <Divider />
+                    <h3 className="emerald">Emerald</h3>
+                    <p>{poke.fields.emeraldText}</p>
+                    <Divider />
+                    <h3 className="fireRed">FireRed</h3>
+                    <p>{poke.fields.fireRedText}</p>
+                    <Divider />
+                    <h3 className="leafGreen">LeafGreen</h3>
+                    <p>{poke.fields.leafGreenText}</p>
+                  </Box>
+                  <Box sx={{ mt: 5 }}>
+                    <h2>Where to Find {poke.fields.name}</h2>
+                    <h3 className="ruby">Ruby</h3>
+                    <Chip label={poke.fields.rubyLocations} />
+                    <Divider />
+                    <h3 className="sapphire">Sapphire</h3>
+                    <Chip label={poke.fields.sapphireLocations} />
+                    <Divider />
+                    <h3 className="emerald">Emerald</h3>
+                    <Chip label={poke.fields.emeraldLocations} />
+                    <Divider />
+                    <h3 className="fireRed">FireRed</h3>
+                    <Chip label={poke.fields.fireRedLocations} />
+                    <Divider />
+                    <h3 className="leafGreen">LeafGreen</h3>
+                    <Chip label={poke.fields.leafGreenLocations} />
+                  </Box>
+                  <Box sx={{ mt: 5 }}>
+                    <h2>Moves</h2>
+                    {poke.fields.moves.map((move, index) => (
+                      <p key={index}>{move}</p>
+                    ))}
+                  </Box>
+                </TabPanelUnstyled>
+                <TabPanelUnstyled value={3}>
+                  <Box>
+                    <h2>Pokédex Entries</h2>
+                    <h3 className="ruby">Ruby</h3>
+                    <p>{poke.fields.rubyText}</p>
+                    <Divider />
+                    <h3 className="sapphire">Sapphire</h3>
+                    <p>{poke.fields.sapphireText}</p>
+                    <Divider />
+                    <h3 className="emerald">Emerald</h3>
+                    <p>{poke.fields.emeraldText}</p>
+                    <Divider />
+                    <h3 className="fireRed">FireRed</h3>
+                    <p>{poke.fields.fireRedText}</p>
+                    <Divider />
+                    <h3 className="leafGreen">LeafGreen</h3>
+                    <p>{poke.fields.leafGreenText}</p>
+                  </Box>
+                  <Box sx={{ mt: 5 }}>
+                    <h2>Where to Find {poke.fields.name}</h2>
+                    <h3 className="ruby">Ruby</h3>
+                    <Chip label={poke.fields.rubyLocations} />
+                    <Divider />
+                    <h3 className="sapphire">Sapphire</h3>
+                    <Chip label={poke.fields.sapphireLocations} />
+                    <Divider />
+                    <h3 className="emerald">Emerald</h3>
+                    <Chip label={poke.fields.emeraldLocations} />
+                    <Divider />
+                    <h3 className="fireRed">FireRed</h3>
+                    <Chip label={poke.fields.fireRedLocations} />
+                    <Divider />
+                    <h3 className="leafGreen">LeafGreen</h3>
+                    <Chip label={poke.fields.leafGreenLocations} />
+                  </Box>
+                  <Box sx={{ mt: 5 }}>
+                    <h2>Moves</h2>
+                    {poke.fields.moves.map((move, index) => (
+                      <p key={index}>{move}</p>
+                    ))}
+                  </Box>
+                </TabPanelUnstyled>
+                <TabPanelUnstyled value={4}>
+                  <Box>
+                    <h2>Pokédex Entries</h2>
+                    <h3 className="gold">Gold</h3>
+                    <p>{poke.fields.goldText}</p>
+                    <Divider />
+                    <h3 className="silver">Silver</h3>
+                    <p>{poke.fields.silverText}</p>
+                    <Divider />
+                    <h3 className="crystal">Crystal</h3>
+                    <p>{poke.fields.crystalText}</p>
+                  </Box>
+                  <Box sx={{ mt: 5 }}>
+                    <h2>Where to Find {poke.fields.name}</h2>
+                    <h3 className="gold">Gold</h3>
+                    <Chip label={poke.fields.goldLocations} />
+                    <Divider />
+                    <h3 className="silver">Silver</h3>
+                    <Chip label={poke.fields.silverLocations} />
+                    <Divider />
+                    <h3 className="crystal">Crystal</h3>
+                    <Chip label={poke.fields.crystalLocations} />
+                  </Box>
+                  <Box sx={{ mt: 5 }}>
+                    <h2>Moves</h2>
+                    {poke.fields.moves.map((move, index) => (
+                      <p key={index}>{move}</p>
+                    ))}
+                  </Box>
+                </TabPanelUnstyled>
+                <TabPanelUnstyled value={5}>
+                  <Box>
+                    <h2>Pokédex Entries</h2>
+                    <h3 className="gold">Gold</h3>
+                    <p>{poke.fields.goldText}</p>
+                    <Divider />
+                    <h3 className="silver">Silver</h3>
+                    <p>{poke.fields.silverText}</p>
+                    <Divider />
+                    <h3 className="crystal">Crystal</h3>
+                    <p>{poke.fields.crystalText}</p>
+                  </Box>
+                  <Box sx={{ mt: 5 }}>
+                    <h2>Where to Find {poke.fields.name}</h2>
+                    <h3 className="gold">Gold</h3>
+                    <Chip label={poke.fields.goldLocations} />
+                    <Divider />
+                    <h3 className="silver">Silver</h3>
+                    <Chip label={poke.fields.silverLocations} />
+                    <Divider />
+                    <h3 className="crystal">Crystal</h3>
+                    <Chip label={poke.fields.crystalLocations} />
+                  </Box>
+                  <Box sx={{ mt: 5 }}>
+                    <h2>Moves</h2>
+                    {poke.fields.moves.map((move, index) => (
+                      <p key={index}>{move}</p>
+                    ))}
+                  </Box>
+                </TabPanelUnstyled>
+                <TabPanelUnstyled value={6}>
+                  <Box>
+                    <h2>Pokédex Entries</h2>
+                    <h3 className="gold">Gold</h3>
+                    <p>{poke.fields.goldText}</p>
+                    <Divider />
+                    <h3 className="silver">Silver</h3>
+                    <p>{poke.fields.silverText}</p>
+                    <Divider />
+                    <h3 className="crystal">Crystal</h3>
+                    <p>{poke.fields.crystalText}</p>
+                  </Box>
+                  <Box sx={{ mt: 5 }}>
+                    <h2>Where to Find {poke.fields.name}</h2>
+                    <h3 className="gold">Gold</h3>
+                    <Chip label={poke.fields.goldLocations} />
+                    <Divider />
+                    <h3 className="silver">Silver</h3>
+                    <Chip label={poke.fields.silverLocations} />
+                    <Divider />
+                    <h3 className="crystal">Crystal</h3>
+                    <Chip label={poke.fields.crystalLocations} />
+                  </Box>
+                  <Box sx={{ mt: 5 }}>
+                    <h2>Moves</h2>
+                    {poke.fields.moves.map((move, index) => (
+                      <p key={index}>{move}</p>
+                    ))}
+                  </Box>
+                </TabPanelUnstyled>
+                <TabPanelUnstyled value={7}>
+                  <Box>
+                    <h2>Pokédex Entries</h2>
+                    <h3 className="gold">Gold</h3>
+                    <p>{poke.fields.goldText}</p>
+                    <Divider />
+                    <h3 className="silver">Silver</h3>
+                    <p>{poke.fields.silverText}</p>
+                    <Divider />
+                    <h3 className="crystal">Crystal</h3>
+                    <p>{poke.fields.crystalText}</p>
+                  </Box>
+                  <Box sx={{ mt: 5 }}>
+                    <h2>Where to Find {poke.fields.name}</h2>
+                    <h3 className="gold">Gold</h3>
+                    <Chip label={poke.fields.goldLocations} />
+                    <Divider />
+                    <h3 className="silver">Silver</h3>
+                    <Chip label={poke.fields.silverLocations} />
+                    <Divider />
+                    <h3 className="crystal">Crystal</h3>
+                    <Chip label={poke.fields.crystalLocations} />
+                  </Box>
+                  <Box sx={{ mt: 5 }}>
+                    <h2>Moves</h2>
+                    {poke.fields.moves.map((move, index) => (
+                      <p key={index}>{move}</p>
+                    ))}
+                  </Box>
+                </TabPanelUnstyled>
+                <TabPanelUnstyled value={8}>
+                  <Box>
+                    <h2>Pokédex Entries</h2>
+                    <h3 className="gold">Gold</h3>
+                    <p>{poke.fields.goldText}</p>
+                    <Divider />
+                    <h3 className="silver">Silver</h3>
+                    <p>{poke.fields.silverText}</p>
+                    <Divider />
+                    <h3 className="crystal">Crystal</h3>
+                    <p>{poke.fields.crystalText}</p>
+                  </Box>
+                  <Box sx={{ mt: 5 }}>
+                    <h2>Where to Find {poke.fields.name}</h2>
+                    <h3 className="gold">Gold</h3>
+                    <Chip label={poke.fields.goldLocations} />
+                    <Divider />
+                    <h3 className="silver">Silver</h3>
+                    <Chip label={poke.fields.silverLocations} />
+                    <Divider />
+                    <h3 className="crystal">Crystal</h3>
+                    <Chip label={poke.fields.crystalLocations} />
+                  </Box>
+                  <Box sx={{ mt: 5 }}>
+                    <h2>Moves</h2>
+                    {poke.fields.moves.map((move, index) => (
+                      <p key={index}>{move}</p>
+                    ))}
+                  </Box>
+                </TabPanelUnstyled>
+              </TabsUnstyled>
+            </Box>
           </Container>
 
           {/***** NAME TRANSLATIONS *****/}
