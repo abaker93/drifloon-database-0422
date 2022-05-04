@@ -181,6 +181,29 @@ export function GetAbilities(abilityId) {
   return abilities;
 }
 
+export function GetEggGroups(eggGroupId) {
+  const [eggGroups, setEggGroups] = useState([]);
+
+  useEffect(() => {
+    setEggGroups([]);
+    if (eggGroupId) {
+      for (let i = 0; i < eggGroupId.length; i++) {
+        base("eggGroups")
+          .select({
+            view: "master",
+            filterByFormula: `RECORD_ID() = "${eggGroupId[i]}"`
+          })
+          .eachPage((records, fetchNextPage) => {
+            setEggGroups((rec) => [...rec, ...records]);
+            fetchNextPage();
+          });
+      }
+    }
+  }, []);
+
+  return eggGroups;
+}
+
 export const url = (national, alt) => {
   national = String(national);
   while (national.length < 3) national = "0" + national;

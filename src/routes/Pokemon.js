@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-import PropTypes from "prop-types";
 import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
@@ -26,8 +25,15 @@ import { PokemonSpeedDial } from "../components/PokemonSpeedDial";
 import { Evolution } from "../components/Evolution";
 import { Weakness } from "../components/Weakness";
 import { Abilities } from "../components/Abilities";
+import { EggGroups } from "../components/EggGroups";
+import { Moves } from "../components/Moves";
 import { AltFormNav } from "../components/AltFormNav";
-import { typesArray, GetPokemon, convertNational } from "../utilities";
+import {
+  generations,
+  typesArray,
+  GetPokemon,
+  convertNational
+} from "../utilities";
 
 export default function Pokemon() {
   const params = useParams();
@@ -82,6 +88,7 @@ export default function Pokemon() {
           key={poke.id}
           data-type-one={poke.fields.type1}
           data-type-two={poke.fields.type2}
+          sx={{ mb: 5 }}
         >
           {/***** HEADER *****/}
           <Box className="pokemonHeader">
@@ -125,40 +132,168 @@ export default function Pokemon() {
           {/***** STATS *****/}
           <Container maxWidth="xl" sx={{ pt: 3 }}>
             <Box id="stats">
-              <Statbar stat="hp" label="HP" num={poke.fields.hp} />
-              <Statbar stat="att" label="Attack" num={poke.fields.att} />
-              <Statbar stat="def" label="Defense" num={poke.fields.def} />
-              <Statbar stat="spAtt" label="Sp.Att" num={poke.fields.spAtt} />
-              <Statbar stat="spDef" label="Sp.Def" num={poke.fields.spDef} />
-              <Statbar stat="spd" label="Speed" num={poke.fields.spd} />
-              <div className="stat total">
-                <p className="statLabel">Total</p>
-                <p className="statNum">
-                  {totalStats(
-                    poke.fields.hp,
-                    poke.fields.att,
-                    poke.fields.def,
-                    poke.fields.spAtt,
-                    poke.fields.spDef,
-                    poke.fields.spd
-                  )}
-                </p>
-              </div>
-
-              {/* <Tabs
-								value={value}
-								onChange={handleStatTabChange}
-								aria-label="stat tabs"
-								sx={{ mt: 2 }}
-							>
-								<Tab>
-									<Chip label="Base" clickable />
-								</Tab>
-								<Chip label="Lvl 50" clickable />
-								<Tab>
-									<Chip label="Lvl 100" clickable />
-								</Tab>
-							</Tabs> */}
+              <TabsUnstyled defaultValue={0}>
+                <TabPanelUnstyled value={0}>
+                  <Statbar stat="hp" label="HP" num={poke.fields.hp} />
+                  <Statbar stat="att" label="Attack" num={poke.fields.att} />
+                  <Statbar stat="def" label="Defense" num={poke.fields.def} />
+                  <Statbar
+                    stat="spAtt"
+                    label="Sp.Att"
+                    num={poke.fields.spAtt}
+                  />
+                  <Statbar
+                    stat="spDef"
+                    label="Sp.Def"
+                    num={poke.fields.spDef}
+                  />
+                  <Statbar stat="spd" label="Speed" num={poke.fields.spd} />
+                  <div className="stat total">
+                    <p className="statLabel">Total</p>
+                    <p className="statNum">
+                      {totalStats(
+                        poke.fields.hp,
+                        poke.fields.att,
+                        poke.fields.def,
+                        poke.fields.spAtt,
+                        poke.fields.spDef,
+                        poke.fields.spd
+                      )}
+                    </p>
+                  </div>
+                </TabPanelUnstyled>
+                <TabPanelUnstyled value={1}>
+                  <Statbar
+                    stat="hp"
+                    label="HP"
+                    min={poke.fields.hp50Min}
+                    max={poke.fields.hp50Max}
+                  />
+                  <Statbar
+                    stat="att"
+                    label="Attack"
+                    min={poke.fields.att50Min}
+                    max={poke.fields.att50Max}
+                  />
+                  <Statbar
+                    stat="def"
+                    label="Defense"
+                    min={poke.fields.def50Min}
+                    max={poke.fields.def50Max}
+                  />
+                  <Statbar
+                    stat="spAtt"
+                    label="Sp.Att"
+                    min={poke.fields.spAtt50Min}
+                    max={poke.fields.spAtt50Max}
+                  />
+                  <Statbar
+                    stat="spDef"
+                    label="Sp.Def"
+                    min={poke.fields.spDef50Min}
+                    max={poke.fields.spDef50Max}
+                  />
+                  <Statbar
+                    stat="spd"
+                    label="Speed"
+                    min={poke.fields.spd50Min}
+                    max={poke.fields.spd50Max}
+                  />
+                  <div className="stat total">
+                    <p className="statLabel">Total</p>
+                    <p className="statNum">
+                      {totalStats(
+                        poke.fields.hp50Min,
+                        poke.fields.att50Min,
+                        poke.fields.def50Min,
+                        poke.fields.spAtt50Min,
+                        poke.fields.spDef50Min,
+                        poke.fields.spd50Min
+                      )}
+                      -
+                      {totalStats(
+                        poke.fields.hp50Max,
+                        poke.fields.att50Max,
+                        poke.fields.def50Max,
+                        poke.fields.spAtt50Max,
+                        poke.fields.spDef50Max,
+                        poke.fields.spd50Max
+                      )}
+                    </p>
+                  </div>
+                </TabPanelUnstyled>
+                <TabPanelUnstyled value={2}>
+                  <Statbar
+                    stat="hp"
+                    label="HP"
+                    min={poke.fields.hp100Min}
+                    max={poke.fields.hp100Max}
+                  />
+                  <Statbar
+                    stat="att"
+                    label="Attack"
+                    min={poke.fields.att100Min}
+                    max={poke.fields.att100Max}
+                  />
+                  <Statbar
+                    stat="def"
+                    label="Defense"
+                    min={poke.fields.def100Min}
+                    max={poke.fields.def100Max}
+                  />
+                  <Statbar
+                    stat="spAtt"
+                    label="Sp.Att"
+                    min={poke.fields.spAtt100Min}
+                    max={poke.fields.spAtt100Max}
+                  />
+                  <Statbar
+                    stat="spDef"
+                    label="Sp.Def"
+                    min={poke.fields.spDef100Min}
+                    max={poke.fields.spDef100Max}
+                  />
+                  <Statbar
+                    stat="spd"
+                    label="Speed"
+                    min={poke.fields.spd100Min}
+                    max={poke.fields.spd100Max}
+                  />
+                  <div className="stat total">
+                    <p className="statLabel">Total</p>
+                    <p className="statNum">
+                      {totalStats(
+                        poke.fields.hp100Min,
+                        poke.fields.att100Min,
+                        poke.fields.def100Min,
+                        poke.fields.spAtt100Min,
+                        poke.fields.spDef100Min,
+                        poke.fields.spd100Min
+                      )}
+                      -
+                      {totalStats(
+                        poke.fields.hp100Max,
+                        poke.fields.att100Max,
+                        poke.fields.def100Max,
+                        poke.fields.spAtt100Max,
+                        poke.fields.spDef100Max,
+                        poke.fields.spd100Max
+                      )}
+                    </p>
+                  </div>
+                </TabPanelUnstyled>
+                <TabsListUnstyled className="chipTabs">
+                  <TabUnstyled>
+                    <Chip label="Base" clickable />
+                  </TabUnstyled>
+                  <TabUnstyled>
+                    <Chip label="Lvl 50" clickable />
+                  </TabUnstyled>
+                  <TabUnstyled>
+                    <Chip label="Lvl 100" clickable />
+                  </TabUnstyled>
+                </TabsListUnstyled>
+              </TabsUnstyled>
             </Box>
           </Container>
 
@@ -201,12 +336,15 @@ export default function Pokemon() {
             <Box id="breeding">
               <h2>Breeding</h2>
               <Box>
-                <h3>Egg Groups</h3>
-                <p>{poke.fields.eggGroups}</p>
+                <EggGroups key={poke.id} pokemon={poke} />
               </Box>
               <Box>
                 <h3>Egg Cycles</h3>
-                <p>{poke.fields.eggCycles}</p>
+                <p className="eggCycles">{poke.fields.eggCycles}</p>
+                <p className="eggCyclesSteps">
+                  ({poke.fields.eggCycles * 255}-{poke.fields.eggCycles * 257}{" "}
+                  steps)
+                </p>
               </Box>
             </Box>
           </Container>
@@ -277,33 +415,11 @@ export default function Pokemon() {
             <Box id="genInfo">
               <TabsUnstyled defaultValue={0}>
                 <TabsListUnstyled className="chipTabs">
-                  <TabUnstyled>
-                    <Chip label="Gen I" clickable />
-                  </TabUnstyled>
-                  <TabUnstyled>
-                    <Chip label="Gen II" clickable />
-                  </TabUnstyled>
-                  <TabUnstyled>
-                    <Chip label="Gen III" clickable />
-                  </TabUnstyled>
-                  <TabUnstyled>
-                    <Chip label="Gen IV" clickable />
-                  </TabUnstyled>
-                  <TabUnstyled>
-                    <Chip label="Gen V" clickable />
-                  </TabUnstyled>
-                  <TabUnstyled>
-                    <Chip label="Gen VI" clickable />
-                  </TabUnstyled>
-                  <TabUnstyled>
-                    <Chip label="Gen VII" clickable />
-                  </TabUnstyled>
-                  <TabUnstyled>
-                    <Chip label="Gen VIII" clickable />
-                  </TabUnstyled>
-                  <TabUnstyled>
-                    <Chip label="Gen IX" clickable />
-                  </TabUnstyled>
+                  {generations.map((gen, index) => (
+                    <TabUnstyled>
+                      <Chip key={index} label={gen} clickable />
+                    </TabUnstyled>
+                  ))}
                 </TabsListUnstyled>
                 <TabPanelUnstyled value={0}>
                   <Box>
@@ -328,12 +444,14 @@ export default function Pokemon() {
                     <h3 className="yellow">Yellow</h3>
                     <Chip label={poke.fields.yellowLocations} />
                   </Box>
-                  <Box sx={{ mt: 5 }}>
-                    <h2>Moves</h2>
-                    {poke.fields.moves.map((move, index) => (
-                      <p key={index}>{move}</p>
-                    ))}
-                  </Box>
+                  {poke.fields.moves ? (
+                    <Box sx={{ mt: 5 }}>
+                      <h2>Moves</h2>
+                      <Moves pokemon={poke} game="Red/Blue" />
+                    </Box>
+                  ) : (
+                    ""
+                  )}
                 </TabPanelUnstyled>
                 <TabPanelUnstyled value={1}>
                   <Box>
@@ -358,12 +476,16 @@ export default function Pokemon() {
                     <h3 className="crystal">Crystal</h3>
                     <Chip label={poke.fields.crystalLocations} />
                   </Box>
-                  <Box sx={{ mt: 5 }}>
-                    <h2>Moves</h2>
-                    {poke.fields.moves.map((move, index) => (
-                      <p key={index}>{move}</p>
-                    ))}
-                  </Box>
+                  {poke.fields.moves ? (
+                    <Box sx={{ mt: 5 }}>
+                      <h2>Moves</h2>
+                      {poke.fields.moves.map((move, index) => (
+                        <p key={index}>{move}</p>
+                      ))}
+                    </Box>
+                  ) : (
+                    ""
+                  )}
                 </TabPanelUnstyled>
                 <TabPanelUnstyled value={2}>
                   <Box>
@@ -400,12 +522,16 @@ export default function Pokemon() {
                     <h3 className="leafGreen">LeafGreen</h3>
                     <Chip label={poke.fields.leafGreenLocations} />
                   </Box>
-                  <Box sx={{ mt: 5 }}>
-                    <h2>Moves</h2>
-                    {poke.fields.moves.map((move, index) => (
-                      <p key={index}>{move}</p>
-                    ))}
-                  </Box>
+                  {poke.fields.moves ? (
+                    <Box sx={{ mt: 5 }}>
+                      <h2>Moves</h2>
+                      {poke.fields.moves.map((move, index) => (
+                        <p key={index}>{move}</p>
+                      ))}
+                    </Box>
+                  ) : (
+                    ""
+                  )}
                 </TabPanelUnstyled>
                 <TabPanelUnstyled value={3}>
                   <Box>
@@ -442,12 +568,16 @@ export default function Pokemon() {
                     <h3 className="leafGreen">LeafGreen</h3>
                     <Chip label={poke.fields.leafGreenLocations} />
                   </Box>
-                  <Box sx={{ mt: 5 }}>
-                    <h2>Moves</h2>
-                    {poke.fields.moves.map((move, index) => (
-                      <p key={index}>{move}</p>
-                    ))}
-                  </Box>
+                  {poke.fields.moves ? (
+                    <Box sx={{ mt: 5 }}>
+                      <h2>Moves</h2>
+                      {poke.fields.moves.map((move, index) => (
+                        <p key={index}>{move}</p>
+                      ))}
+                    </Box>
+                  ) : (
+                    ""
+                  )}
                 </TabPanelUnstyled>
                 <TabPanelUnstyled value={4}>
                   <Box>
@@ -472,12 +602,16 @@ export default function Pokemon() {
                     <h3 className="crystal">Crystal</h3>
                     <Chip label={poke.fields.crystalLocations} />
                   </Box>
-                  <Box sx={{ mt: 5 }}>
-                    <h2>Moves</h2>
-                    {poke.fields.moves.map((move, index) => (
-                      <p key={index}>{move}</p>
-                    ))}
-                  </Box>
+                  {poke.fields.moves ? (
+                    <Box sx={{ mt: 5 }}>
+                      <h2>Moves</h2>
+                      {poke.fields.moves.map((move, index) => (
+                        <p key={index}>{move}</p>
+                      ))}
+                    </Box>
+                  ) : (
+                    ""
+                  )}
                 </TabPanelUnstyled>
                 <TabPanelUnstyled value={5}>
                   <Box>
@@ -502,12 +636,16 @@ export default function Pokemon() {
                     <h3 className="crystal">Crystal</h3>
                     <Chip label={poke.fields.crystalLocations} />
                   </Box>
-                  <Box sx={{ mt: 5 }}>
-                    <h2>Moves</h2>
-                    {poke.fields.moves.map((move, index) => (
-                      <p key={index}>{move}</p>
-                    ))}
-                  </Box>
+                  {poke.fields.moves ? (
+                    <Box sx={{ mt: 5 }}>
+                      <h2>Moves</h2>
+                      {poke.fields.moves.map((move, index) => (
+                        <p key={index}>{move}</p>
+                      ))}
+                    </Box>
+                  ) : (
+                    ""
+                  )}
                 </TabPanelUnstyled>
                 <TabPanelUnstyled value={6}>
                   <Box>
@@ -532,12 +670,16 @@ export default function Pokemon() {
                     <h3 className="crystal">Crystal</h3>
                     <Chip label={poke.fields.crystalLocations} />
                   </Box>
-                  <Box sx={{ mt: 5 }}>
-                    <h2>Moves</h2>
-                    {poke.fields.moves.map((move, index) => (
-                      <p key={index}>{move}</p>
-                    ))}
-                  </Box>
+                  {poke.fields.moves ? (
+                    <Box sx={{ mt: 5 }}>
+                      <h2>Moves</h2>
+                      {poke.fields.moves.map((move, index) => (
+                        <p key={index}>{move}</p>
+                      ))}
+                    </Box>
+                  ) : (
+                    ""
+                  )}
                 </TabPanelUnstyled>
                 <TabPanelUnstyled value={7}>
                   <Box>
@@ -562,12 +704,16 @@ export default function Pokemon() {
                     <h3 className="crystal">Crystal</h3>
                     <Chip label={poke.fields.crystalLocations} />
                   </Box>
-                  <Box sx={{ mt: 5 }}>
-                    <h2>Moves</h2>
-                    {poke.fields.moves.map((move, index) => (
-                      <p key={index}>{move}</p>
-                    ))}
-                  </Box>
+                  {poke.fields.moves ? (
+                    <Box sx={{ mt: 5 }}>
+                      <h2>Moves</h2>
+                      {poke.fields.moves.map((move, index) => (
+                        <p key={index}>{move}</p>
+                      ))}
+                    </Box>
+                  ) : (
+                    ""
+                  )}
                 </TabPanelUnstyled>
                 <TabPanelUnstyled value={8}>
                   <Box>
@@ -592,12 +738,16 @@ export default function Pokemon() {
                     <h3 className="crystal">Crystal</h3>
                     <Chip label={poke.fields.crystalLocations} />
                   </Box>
-                  <Box sx={{ mt: 5 }}>
-                    <h2>Moves</h2>
-                    {poke.fields.moves.map((move, index) => (
-                      <p key={index}>{move}</p>
-                    ))}
-                  </Box>
+                  {poke.fields.moves ? (
+                    <Box sx={{ mt: 5 }}>
+                      <h2>Moves</h2>
+                      {poke.fields.moves.map((move, index) => (
+                        <p key={index}>{move}</p>
+                      ))}
+                    </Box>
+                  ) : (
+                    ""
+                  )}
                 </TabPanelUnstyled>
               </TabsUnstyled>
             </Box>

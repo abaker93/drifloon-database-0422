@@ -46,8 +46,6 @@ export const Evolution = (poke) => {
       }
     }
 
-    console.log(evoCond);
-
     return evoCond;
   };
 
