@@ -1,10 +1,5 @@
 @import './colors';
 
-$horses: (pony #996633)
-         (horse Pink)
-         (mini-horse #333)
-         (maxi-pony #cc9849);
-
 $single-types: (
   ( 'bug', $bug, $bugLight, $bugDark ),
   ( 'dark', $dark, $darkLight, $darkDark ),
@@ -23,5 +18,6 @@ $single-types: (
   ( 'psychic', $psychic, $psychicLight, $psychicDark ),
   ( 'rock', $rock, $rockLight, $rockDark ),
   ( 'steel', $steel, $steelLight, $steelDark ),
-  ( 'water', $water, $waterLight, $waterDark )
+  ( 'water', $water, $waterLight, $waterDark ),
+  ( '???', $unknown, $unknownLight, $unknownDark )
 );

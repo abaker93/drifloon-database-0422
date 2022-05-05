@@ -152,7 +152,7 @@ export const Evolution = (poke) => {
                 value !== "recCUXMOJy5H3QaO9" ? (
                   <EvoPhoto key={index} pokemon={value} />
                 ) : (
-                  <div className="evoBlock evoPhoto"></div>
+                  <div key={index} className="evoBlock evoPhoto"></div>
                 )
               )}
             </div>

@@ -83,9 +83,9 @@ export default function Pokemon() {
       {/*******************************************
 					POKEMON START
 			*******************************************/}
-      {pokemon.map((poke) => (
+      {pokemon.map((poke, index) => (
         <Box
-          key={poke.id}
+          key={index}
           data-type-one={poke.fields.type1}
           data-type-two={poke.fields.type2}
           sx={{ mb: 5 }}
@@ -405,8 +405,6 @@ export default function Pokemon() {
             </Box>
           </Container>
 
-          <Divider sx={{ mt: 5 }} />
-
           {/***** GENERATION SPECIFIC INFO *****/}
           <Container
             maxWidth="xl"
@@ -445,7 +443,7 @@ export default function Pokemon() {
                     <Chip label={poke.fields.yellowLocations} />
                   </Box>
                   {poke.fields.moves ? (
-                    <Box sx={{ mt: 5 }}>
+                    <Box sx={{ mt: 5 }} className="moves">
                       <h2>Moves</h2>
                       <Moves pokemon={poke} game="Red/Blue" />
                     </Box>
@@ -477,11 +475,9 @@ export default function Pokemon() {
                     <Chip label={poke.fields.crystalLocations} />
                   </Box>
                   {poke.fields.moves ? (
-                    <Box sx={{ mt: 5 }}>
+                    <Box sx={{ mt: 5 }} className="moves">
                       <h2>Moves</h2>
-                      {poke.fields.moves.map((move, index) => (
-                        <p key={index}>{move}</p>
-                      ))}
+                      <Moves pokemon={poke} game="Gold/Silver" />
                     </Box>
                   ) : (
                     ""
@@ -522,7 +518,7 @@ export default function Pokemon() {
                     <h3 className="leafGreen">LeafGreen</h3>
                     <Chip label={poke.fields.leafGreenLocations} />
                   </Box>
-                  {poke.fields.moves ? (
+                  {/* {poke.fields.moves ? (
                     <Box sx={{ mt: 5 }}>
                       <h2>Moves</h2>
                       {poke.fields.moves.map((move, index) => (
@@ -531,7 +527,7 @@ export default function Pokemon() {
                     </Box>
                   ) : (
                     ""
-                  )}
+                  )} */}
                 </TabPanelUnstyled>
                 <TabPanelUnstyled value={3}>
                   <Box>
@@ -568,7 +564,7 @@ export default function Pokemon() {
                     <h3 className="leafGreen">LeafGreen</h3>
                     <Chip label={poke.fields.leafGreenLocations} />
                   </Box>
-                  {poke.fields.moves ? (
+                  {/* {poke.fields.moves ? (
                     <Box sx={{ mt: 5 }}>
                       <h2>Moves</h2>
                       {poke.fields.moves.map((move, index) => (
@@ -577,7 +573,7 @@ export default function Pokemon() {
                     </Box>
                   ) : (
                     ""
-                  )}
+                  )} */}
                 </TabPanelUnstyled>
                 <TabPanelUnstyled value={4}>
                   <Box>
@@ -602,7 +598,7 @@ export default function Pokemon() {
                     <h3 className="crystal">Crystal</h3>
                     <Chip label={poke.fields.crystalLocations} />
                   </Box>
-                  {poke.fields.moves ? (
+                  {/* {poke.fields.moves ? (
                     <Box sx={{ mt: 5 }}>
                       <h2>Moves</h2>
                       {poke.fields.moves.map((move, index) => (
@@ -611,7 +607,7 @@ export default function Pokemon() {
                     </Box>
                   ) : (
                     ""
-                  )}
+                  )} */}
                 </TabPanelUnstyled>
                 <TabPanelUnstyled value={5}>
                   <Box>
@@ -636,7 +632,7 @@ export default function Pokemon() {
                     <h3 className="crystal">Crystal</h3>
                     <Chip label={poke.fields.crystalLocations} />
                   </Box>
-                  {poke.fields.moves ? (
+                  {/* {poke.fields.moves ? (
                     <Box sx={{ mt: 5 }}>
                       <h2>Moves</h2>
                       {poke.fields.moves.map((move, index) => (
@@ -645,7 +641,7 @@ export default function Pokemon() {
                     </Box>
                   ) : (
                     ""
-                  )}
+                  )} */}
                 </TabPanelUnstyled>
                 <TabPanelUnstyled value={6}>
                   <Box>
@@ -670,7 +666,7 @@ export default function Pokemon() {
                     <h3 className="crystal">Crystal</h3>
                     <Chip label={poke.fields.crystalLocations} />
                   </Box>
-                  {poke.fields.moves ? (
+                  {/* {poke.fields.moves ? (
                     <Box sx={{ mt: 5 }}>
                       <h2>Moves</h2>
                       {poke.fields.moves.map((move, index) => (
@@ -679,7 +675,7 @@ export default function Pokemon() {
                     </Box>
                   ) : (
                     ""
-                  )}
+                  )} */}
                 </TabPanelUnstyled>
                 <TabPanelUnstyled value={7}>
                   <Box>
@@ -704,7 +700,7 @@ export default function Pokemon() {
                     <h3 className="crystal">Crystal</h3>
                     <Chip label={poke.fields.crystalLocations} />
                   </Box>
-                  {poke.fields.moves ? (
+                  {/* {poke.fields.moves ? (
                     <Box sx={{ mt: 5 }}>
                       <h2>Moves</h2>
                       {poke.fields.moves.map((move, index) => (
@@ -713,7 +709,7 @@ export default function Pokemon() {
                     </Box>
                   ) : (
                     ""
-                  )}
+                  )} */}
                 </TabPanelUnstyled>
                 <TabPanelUnstyled value={8}>
                   <Box>
@@ -738,7 +734,7 @@ export default function Pokemon() {
                     <h3 className="crystal">Crystal</h3>
                     <Chip label={poke.fields.crystalLocations} />
                   </Box>
-                  {poke.fields.moves ? (
+                  {/* {poke.fields.moves ? (
                     <Box sx={{ mt: 5 }}>
                       <h2>Moves</h2>
                       {poke.fields.moves.map((move, index) => (
@@ -747,7 +743,7 @@ export default function Pokemon() {
                     </Box>
                   ) : (
                     ""
-                  )}
+                  )} */}
                 </TabPanelUnstyled>
               </TabsUnstyled>
             </Box>

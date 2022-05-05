@@ -292,6 +292,16 @@
       margin-top: 10px;
       margin-bottom: 10px;
     }
+
+    .moves {
+      .MuiChip-root { width: 100%; }
+      img { max-width: 32px; }
+    
+      .MuiTableCell-head {
+        font-weight: bold;
+        background-color: #DBDBDB;
+      }
+    }
   }
 
 
