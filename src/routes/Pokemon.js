@@ -28,6 +28,7 @@ import { Abilities } from "../components/Abilities";
 import { EggGroups } from "../components/EggGroups";
 import { Moves } from "../components/Moves";
 import { AltFormNav } from "../components/AltFormNav";
+import { Location } from "../components/Location";
 import {
   generations,
   typesArray,
@@ -434,13 +435,13 @@ export default function Pokemon() {
                   <Box sx={{ mt: 5 }}>
                     <h2>Where to Find {poke.fields.name}</h2>
                     <h3 className="red">Red</h3>
-                    <Chip label={poke.fields.redLocations} />
+                    <Location pokemon={poke} game="Red" />
                     <Divider />
                     <h3 className="blue">Blue</h3>
-                    <Chip label={poke.fields.blueLocations} />
+                    <Location pokemon={poke} game="Blue" />
                     <Divider />
                     <h3 className="yellow">Yellow</h3>
-                    <Chip label={poke.fields.yellowLocations} />
+                    <Location pokemon={poke} game="Yellow" />
                   </Box>
                   {poke.fields.moves ? (
                     <Box sx={{ mt: 5 }} className="moves">
@@ -466,13 +467,13 @@ export default function Pokemon() {
                   <Box sx={{ mt: 5 }}>
                     <h2>Where to Find {poke.fields.name}</h2>
                     <h3 className="gold">Gold</h3>
-                    <Chip label={poke.fields.goldLocations} />
+                    <Location pokemon={poke} game="Gold" />
                     <Divider />
                     <h3 className="silver">Silver</h3>
-                    <Chip label={poke.fields.silverLocations} />
+                    <Location pokemon={poke} game="Silver" />
                     <Divider />
                     <h3 className="crystal">Crystal</h3>
-                    <Chip label={poke.fields.crystalLocations} />
+                    <Location pokemon={poke} game="Crystal" />
                   </Box>
                   {poke.fields.moves ? (
                     <Box sx={{ mt: 5 }} className="moves">
@@ -504,19 +505,19 @@ export default function Pokemon() {
                   <Box sx={{ mt: 5 }}>
                     <h2>Where to Find {poke.fields.name}</h2>
                     <h3 className="ruby">Ruby</h3>
-                    <Chip label={poke.fields.rubyLocations} />
+                    <Location pokemon={poke} game="Ruby" />
                     <Divider />
                     <h3 className="sapphire">Sapphire</h3>
-                    <Chip label={poke.fields.sapphireLocations} />
+                    <Location pokemon={poke} game="Sapphire" />
                     <Divider />
                     <h3 className="emerald">Emerald</h3>
-                    <Chip label={poke.fields.emeraldLocations} />
+                    <Location pokemon={poke} game="Emerald" />
                     <Divider />
                     <h3 className="fireRed">FireRed</h3>
-                    <Chip label={poke.fields.fireRedLocations} />
+                    <Location pokemon={poke} game="Firered" />
                     <Divider />
                     <h3 className="leafGreen">LeafGreen</h3>
-                    <Chip label={poke.fields.leafGreenLocations} />
+                    <Location pokemon={poke} game="Leafgreen" />
                   </Box>
                   {/* {poke.fields.moves ? (
                     <Box sx={{ mt: 5 }}>
@@ -532,37 +533,37 @@ export default function Pokemon() {
                 <TabPanelUnstyled value={3}>
                   <Box>
                     <h2>Pokédex Entries</h2>
-                    <h3 className="ruby">Ruby</h3>
-                    <p>{poke.fields.rubyText}</p>
+                    <h3 className="diamond">Diamond</h3>
+                    <p>{poke.fields.diamondText}</p>
                     <Divider />
-                    <h3 className="sapphire">Sapphire</h3>
-                    <p>{poke.fields.sapphireText}</p>
+                    <h3 className="pearl">Pearl</h3>
+                    <p>{poke.fields.pearlText}</p>
                     <Divider />
-                    <h3 className="emerald">Emerald</h3>
-                    <p>{poke.fields.emeraldText}</p>
+                    <h3 className="platinum">Platinum</h3>
+                    <p>{poke.fields.platinumText}</p>
                     <Divider />
-                    <h3 className="fireRed">FireRed</h3>
-                    <p>{poke.fields.fireRedText}</p>
+                    <h3 className="heartGold">HeartGold</h3>
+                    <p>{poke.fields.heartGoldText}</p>
                     <Divider />
-                    <h3 className="leafGreen">LeafGreen</h3>
-                    <p>{poke.fields.leafGreenText}</p>
+                    <h3 className="soulSilver">SoulSilver</h3>
+                    <p>{poke.fields.soulSilverText}</p>
                   </Box>
                   <Box sx={{ mt: 5 }}>
                     <h2>Where to Find {poke.fields.name}</h2>
-                    <h3 className="ruby">Ruby</h3>
-                    <Chip label={poke.fields.rubyLocations} />
+                    <h3 className="diamond">Diamond</h3>
+                    <Location pokemon={poke} game="Diamond" />
                     <Divider />
-                    <h3 className="sapphire">Sapphire</h3>
-                    <Chip label={poke.fields.sapphireLocations} />
+                    <h3 className="pearl">Pearl</h3>
+                    <Location pokemon={poke} game="Pearl" />
                     <Divider />
-                    <h3 className="emerald">Emerald</h3>
-                    <Chip label={poke.fields.emeraldLocations} />
+                    <h3 className="platinum">Platinum</h3>
+                    <Location pokemon={poke} game="Platinum" />
                     <Divider />
-                    <h3 className="fireRed">FireRed</h3>
-                    <Chip label={poke.fields.fireRedLocations} />
+                    <h3 className="heartGold">HeartGold</h3>
+                    <Location pokemon={poke} game="Heartgold" />
                     <Divider />
-                    <h3 className="leafGreen">LeafGreen</h3>
-                    <Chip label={poke.fields.leafGreenLocations} />
+                    <h3 className="soulSilver">SoulSilver</h3>
+                    <Location pokemon={poke} game="Soulsilver" />
                   </Box>
                   {/* {poke.fields.moves ? (
                     <Box sx={{ mt: 5 }}>
@@ -587,7 +588,7 @@ export default function Pokemon() {
                     <h3 className="crystal">Crystal</h3>
                     <p>{poke.fields.crystalText}</p>
                   </Box>
-                  <Box sx={{ mt: 5 }}>
+                  {/* <Box sx={{ mt: 5 }}>
                     <h2>Where to Find {poke.fields.name}</h2>
                     <h3 className="gold">Gold</h3>
                     <Chip label={poke.fields.goldLocations} />
@@ -597,7 +598,7 @@ export default function Pokemon() {
                     <Divider />
                     <h3 className="crystal">Crystal</h3>
                     <Chip label={poke.fields.crystalLocations} />
-                  </Box>
+                  </Box> */}
                   {/* {poke.fields.moves ? (
                     <Box sx={{ mt: 5 }}>
                       <h2>Moves</h2>
@@ -621,7 +622,7 @@ export default function Pokemon() {
                     <h3 className="crystal">Crystal</h3>
                     <p>{poke.fields.crystalText}</p>
                   </Box>
-                  <Box sx={{ mt: 5 }}>
+                  {/* <Box sx={{ mt: 5 }}>
                     <h2>Where to Find {poke.fields.name}</h2>
                     <h3 className="gold">Gold</h3>
                     <Chip label={poke.fields.goldLocations} />
@@ -631,7 +632,7 @@ export default function Pokemon() {
                     <Divider />
                     <h3 className="crystal">Crystal</h3>
                     <Chip label={poke.fields.crystalLocations} />
-                  </Box>
+                  </Box> */}
                   {/* {poke.fields.moves ? (
                     <Box sx={{ mt: 5 }}>
                       <h2>Moves</h2>
@@ -655,7 +656,7 @@ export default function Pokemon() {
                     <h3 className="crystal">Crystal</h3>
                     <p>{poke.fields.crystalText}</p>
                   </Box>
-                  <Box sx={{ mt: 5 }}>
+                  {/* <Box sx={{ mt: 5 }}>
                     <h2>Where to Find {poke.fields.name}</h2>
                     <h3 className="gold">Gold</h3>
                     <Chip label={poke.fields.goldLocations} />
@@ -665,7 +666,7 @@ export default function Pokemon() {
                     <Divider />
                     <h3 className="crystal">Crystal</h3>
                     <Chip label={poke.fields.crystalLocations} />
-                  </Box>
+                  </Box> */}
                   {/* {poke.fields.moves ? (
                     <Box sx={{ mt: 5 }}>
                       <h2>Moves</h2>
@@ -689,7 +690,7 @@ export default function Pokemon() {
                     <h3 className="crystal">Crystal</h3>
                     <p>{poke.fields.crystalText}</p>
                   </Box>
-                  <Box sx={{ mt: 5 }}>
+                  {/* <Box sx={{ mt: 5 }}>
                     <h2>Where to Find {poke.fields.name}</h2>
                     <h3 className="gold">Gold</h3>
                     <Chip label={poke.fields.goldLocations} />
@@ -699,7 +700,7 @@ export default function Pokemon() {
                     <Divider />
                     <h3 className="crystal">Crystal</h3>
                     <Chip label={poke.fields.crystalLocations} />
-                  </Box>
+                  </Box> */}
                   {/* {poke.fields.moves ? (
                     <Box sx={{ mt: 5 }}>
                       <h2>Moves</h2>
@@ -723,7 +724,7 @@ export default function Pokemon() {
                     <h3 className="crystal">Crystal</h3>
                     <p>{poke.fields.crystalText}</p>
                   </Box>
-                  <Box sx={{ mt: 5 }}>
+                  {/* <Box sx={{ mt: 5 }}>
                     <h2>Where to Find {poke.fields.name}</h2>
                     <h3 className="gold">Gold</h3>
                     <Chip label={poke.fields.goldLocations} />
@@ -733,7 +734,7 @@ export default function Pokemon() {
                     <Divider />
                     <h3 className="crystal">Crystal</h3>
                     <Chip label={poke.fields.crystalLocations} />
-                  </Box>
+                  </Box> */}
                   {/* {poke.fields.moves ? (
                     <Box sx={{ mt: 5 }}>
                       <h2>Moves</h2>

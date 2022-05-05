@@ -204,6 +204,50 @@ export function GetEggGroups(eggGroupId) {
   return eggGroups;
 }
 
+export function GetMovesByGame(poke, game, type) {
+  const [movesByGame, setMovesByGame] = useState([]);
+
+  useEffect(() => {
+    setMovesByGame([]);
+    base("movesByGame")
+      .select({
+        view: "master",
+        filterByFormula: `AND((nationalDex = "${poke}"), (FIND("${game}", game)), (moveType = "${type}"))`,
+        sort: [
+          { field: "level", direction: "asc" },
+          { field: "hmNum", direction: "asc" },
+          { field: "tmNum", direction: "asc" }
+        ]
+      })
+      .eachPage((records, fetchNextPage) => {
+        setMovesByGame((rec) => [...rec, ...records]);
+        fetchNextPage();
+      });
+  }, []);
+
+  return movesByGame;
+}
+
+export function GetLocations(poke, game) {
+  const [locations, setLocations] = useState([]);
+
+  useEffect(() => {
+    setLocations([]);
+    base("locationsByGame")
+      .select({
+        view: "master",
+        filterByFormula: `AND((nationalDex = "${poke}"), (FIND("${game}", game)))`,
+        sort: [{ field: "location", direction: "asc" }]
+      })
+      .eachPage((records, fetchNextPage) => {
+        setLocations((rec) => [...rec, ...records]);
+        fetchNextPage();
+      });
+  }, []);
+
+  return locations;
+}
+
 export const url = (national, alt) => {
   national = String(national);
   while (national.length < 3) national = "0" + national;

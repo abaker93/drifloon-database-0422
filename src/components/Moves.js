@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { base } from "./base";
+import React from "react";
 
 import Box from "@mui/material/Box";
 import Table from "@mui/material/Table";
@@ -10,29 +9,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Chip from "@mui/material/Chip";
 
-function GetMovesByGame(poke, game, type) {
-  const [movesByGame, setMovesByGame] = useState([]);
-
-  useEffect(() => {
-    setMovesByGame([]);
-    base("movesByGame")
-      .select({
-        view: "master",
-        filterByFormula: `AND((nationalDex = "${poke}"), (FIND("${game}", game)), (moveType = "${type}"))`,
-        sort: [
-          { field: "level", direction: "asc" },
-          { field: "hmNum", direction: "asc" },
-          { field: "tmNum", direction: "asc" }
-        ]
-      })
-      .eachPage((records, fetchNextPage) => {
-        setMovesByGame((rec) => [...rec, ...records]);
-        fetchNextPage();
-      });
-  }, []);
-
-  return movesByGame;
-}
+import { GetMovesByGame } from "../utilities";
 
 export const Moves = (poke) => {
   return (
@@ -86,55 +63,55 @@ export const Moves = (poke) => {
           </Table>
         </TableContainer>
       </Box>
-      {GetMovesByGame(poke.pokemon.fields.name, poke.game, "Egg").length > 0 ? (
-        <Box sx={{ mt: 5 }}>
-          <h3>Egg Moves</h3>
-          <TableContainer>
-            <Table size="small">
-              <TableHead>
-                <TableRow>
-                  <TableCell>Move</TableCell>
-                  <TableCell sx={{ width: 100 }}>Type</TableCell>
-                  <TableCell sx={{ width: 32 }}>Cat.</TableCell>
-                  <TableCell sx={{ width: 45 }}>Power</TableCell>
-                  <TableCell sx={{ width: 45 }}>Acc.</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {GetMovesByGame(poke.pokemon.fields.name, poke.game, "Egg").map(
-                  (move) => (
-                    <TableRow key={move.id} hover>
-                      <TableCell>{move.fields.move}</TableCell>
-                      <TableCell>
-                        <Chip
-                          label={move.fields.type}
-                          data-type={move.fields.type}
-                          size="small"
-                        />
-                      </TableCell>
-                      <TableCell>
-                        <img src={`/assets/${move.fields.category}.svg`} />
-                      </TableCell>
-                      <TableCell sx={{ textAlign: "center" }}>
-                        {move.fields.power ? move.fields.power : <>&mdash;</>}
-                      </TableCell>
-                      <TableCell sx={{ textAlign: "center" }}>
-                        {move.fields.accuracy ? (
-                          move.fields.accuracy
-                        ) : (
-                          <>&mdash;</>
-                        )}
-                      </TableCell>
-                    </TableRow>
-                  )
-                )}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </Box>
-      ) : (
+      {/* {GetMovesByGame(poke.pokemon.fields.name, poke.game, "Egg").length > 0 ? ( */}
+      <Box sx={{ mt: 5 }}>
+        <h3>Egg Moves</h3>
+        <TableContainer>
+          <Table size="small">
+            <TableHead>
+              <TableRow>
+                <TableCell>Move</TableCell>
+                <TableCell sx={{ width: 100 }}>Type</TableCell>
+                <TableCell sx={{ width: 32 }}>Cat.</TableCell>
+                <TableCell sx={{ width: 45 }}>Power</TableCell>
+                <TableCell sx={{ width: 45 }}>Acc.</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {GetMovesByGame(poke.pokemon.fields.name, poke.game, "Egg").map(
+                (move) => (
+                  <TableRow key={move.id} hover>
+                    <TableCell>{move.fields.move}</TableCell>
+                    <TableCell>
+                      <Chip
+                        label={move.fields.type}
+                        data-type={move.fields.type}
+                        size="small"
+                      />
+                    </TableCell>
+                    <TableCell>
+                      <img src={`/assets/${move.fields.category}.svg`} />
+                    </TableCell>
+                    <TableCell sx={{ textAlign: "center" }}>
+                      {move.fields.power ? move.fields.power : <>&mdash;</>}
+                    </TableCell>
+                    <TableCell sx={{ textAlign: "center" }}>
+                      {move.fields.accuracy ? (
+                        move.fields.accuracy
+                      ) : (
+                        <>&mdash;</>
+                      )}
+                    </TableCell>
+                  </TableRow>
+                )
+              )}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Box>
+      {/* ) : (
         ""
-      )}
+      )} */}
       <Box sx={{ mt: 5 }}>
         <h3>Moves Learnt by HM</h3>
         <TableContainer>
