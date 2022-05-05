@@ -408,7 +408,7 @@ export default function Pokemon() {
           {/***** GENERATION SPECIFIC INFO *****/}
           <Container
             maxWidth="xl"
-            sx={{ mt: 5, pt: 2, pb: 2, background: "#EEEEEE" }}
+            sx={{ mt: 5, pt: 5, pb: 10, background: "#EEEEEE" }}
           >
             <Box id="genInfo">
               <TabsUnstyled defaultValue={0}>

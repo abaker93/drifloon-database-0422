@@ -43,19 +43,21 @@ export const Moves = (poke) => {
           <Table size="small">
             <TableHead>
               <TableRow>
-                <TableCell>Lv.</TableCell>
+                <TableCell sx={{ width: 20 }}>Lv.</TableCell>
                 <TableCell>Move</TableCell>
-                <TableCell>Type</TableCell>
-                <TableCell>Cat.</TableCell>
-                <TableCell>Power</TableCell>
-                <TableCell>Acc.</TableCell>
+                <TableCell sx={{ width: 100 }}>Type</TableCell>
+                <TableCell sx={{ width: 32 }}>Cat.</TableCell>
+                <TableCell sx={{ width: 45 }}>Power</TableCell>
+                <TableCell sx={{ width: 45 }}>Acc.</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {GetMovesByGame(poke.pokemon.fields.name, poke.game, "Level").map(
                 (move) => (
                   <TableRow key={move.id} hover>
-                    <TableCell>{move.fields.level}</TableCell>
+                    <TableCell sx={{ textAlign: "center" }}>
+                      {move.fields.level}
+                    </TableCell>
                     <TableCell>{move.fields.move}</TableCell>
                     <TableCell>
                       <Chip
@@ -67,10 +69,10 @@ export const Moves = (poke) => {
                     <TableCell>
                       <img src={`/assets/${move.fields.category}.svg`} />
                     </TableCell>
-                    <TableCell>
+                    <TableCell sx={{ textAlign: "center" }}>
                       {move.fields.power ? move.fields.power : <>&mdash;</>}
                     </TableCell>
-                    <TableCell>
+                    <TableCell sx={{ textAlign: "center" }}>
                       {move.fields.accuracy ? (
                         move.fields.accuracy
                       ) : (
@@ -84,7 +86,7 @@ export const Moves = (poke) => {
           </Table>
         </TableContainer>
       </Box>
-      {GetMovesByGame(poke.pokemon.fields.name, poke.game, "Egg") ? (
+      {GetMovesByGame(poke.pokemon.fields.name, poke.game, "Egg").length > 0 ? (
         <Box sx={{ mt: 5 }}>
           <h3>Egg Moves</h3>
           <TableContainer>
@@ -92,10 +94,10 @@ export const Moves = (poke) => {
               <TableHead>
                 <TableRow>
                   <TableCell>Move</TableCell>
-                  <TableCell>Type</TableCell>
-                  <TableCell>Cat.</TableCell>
-                  <TableCell>Power</TableCell>
-                  <TableCell>Acc.</TableCell>
+                  <TableCell sx={{ width: 100 }}>Type</TableCell>
+                  <TableCell sx={{ width: 32 }}>Cat.</TableCell>
+                  <TableCell sx={{ width: 45 }}>Power</TableCell>
+                  <TableCell sx={{ width: 45 }}>Acc.</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -113,10 +115,10 @@ export const Moves = (poke) => {
                       <TableCell>
                         <img src={`/assets/${move.fields.category}.svg`} />
                       </TableCell>
-                      <TableCell>
+                      <TableCell sx={{ textAlign: "center" }}>
                         {move.fields.power ? move.fields.power : <>&mdash;</>}
                       </TableCell>
-                      <TableCell>
+                      <TableCell sx={{ textAlign: "center" }}>
                         {move.fields.accuracy ? (
                           move.fields.accuracy
                         ) : (
@@ -139,19 +141,21 @@ export const Moves = (poke) => {
           <Table size="small">
             <TableHead>
               <TableRow>
-                <TableCell>HM</TableCell>
+                <TableCell sx={{ width: 20 }}>HM</TableCell>
                 <TableCell>Move</TableCell>
-                <TableCell>Type</TableCell>
-                <TableCell>Cat.</TableCell>
-                <TableCell>Power</TableCell>
-                <TableCell>Acc.</TableCell>
+                <TableCell sx={{ width: 100 }}>Type</TableCell>
+                <TableCell sx={{ width: 32 }}>Cat.</TableCell>
+                <TableCell sx={{ width: 45 }}>Power</TableCell>
+                <TableCell sx={{ width: 45 }}>Acc.</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {GetMovesByGame(poke.pokemon.fields.name, poke.game, "HM").map(
                 (move) => (
                   <TableRow key={move.id} hover>
-                    <TableCell>{move.fields.hmNum}</TableCell>
+                    <TableCell sx={{ textAlign: "center" }}>
+                      {move.fields.hmNum}
+                    </TableCell>
                     <TableCell>{move.fields.move}</TableCell>
                     <TableCell>
                       <Chip
@@ -163,10 +167,10 @@ export const Moves = (poke) => {
                     <TableCell>
                       <img src={`/assets/${move.fields.category}.svg`} />
                     </TableCell>
-                    <TableCell>
+                    <TableCell sx={{ textAlign: "center" }}>
                       {move.fields.power ? move.fields.power : <>&mdash;</>}
                     </TableCell>
-                    <TableCell>
+                    <TableCell sx={{ textAlign: "center" }}>
                       {move.fields.accuracy ? (
                         move.fields.accuracy
                       ) : (
@@ -186,19 +190,21 @@ export const Moves = (poke) => {
           <Table size="small">
             <TableHead>
               <TableRow>
-                <TableCell>TM</TableCell>
+                <TableCell sx={{ width: 20 }}>TM</TableCell>
                 <TableCell>Move</TableCell>
-                <TableCell>Type</TableCell>
-                <TableCell>Cat.</TableCell>
-                <TableCell>Power</TableCell>
-                <TableCell>Acc.</TableCell>
+                <TableCell sx={{ width: 100 }}>Type</TableCell>
+                <TableCell sx={{ width: 32 }}>Cat.</TableCell>
+                <TableCell sx={{ width: 45 }}>Power</TableCell>
+                <TableCell sx={{ width: 45 }}>Acc.</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {GetMovesByGame(poke.pokemon.fields.name, poke.game, "TM").map(
                 (move) => (
                   <TableRow key={move.id} hover>
-                    <TableCell>{move.fields.tmNum}</TableCell>
+                    <TableCell sx={{ textAlign: "center" }}>
+                      {move.fields.tmNum}
+                    </TableCell>
                     <TableCell>{move.fields.move}</TableCell>
                     <TableCell>
                       <Chip
@@ -210,10 +216,10 @@ export const Moves = (poke) => {
                     <TableCell>
                       <img src={`/assets/${move.fields.category}.svg`} />
                     </TableCell>
-                    <TableCell>
+                    <TableCell sx={{ textAlign: "center" }}>
                       {move.fields.power ? move.fields.power : <>&mdash;</>}
                     </TableCell>
-                    <TableCell>
+                    <TableCell sx={{ textAlign: "center" }}>
                       {move.fields.accuracy ? (
                         move.fields.accuracy
                       ) : (
