@@ -13,17 +13,11 @@ img { max-width: 100%; }
 *********************************************/
 
 h3 {
-	&.red { color: hsl(8, 68%, 46%); }
-	&.blue { color: hsl(217, 50%, 47%); }
-	&.yellow { color: hsl(49, 78%, 56%); }
-	&.gold { color: hsl(47, 28%, 47%); }
-	&.silver { color: hsl(214, 8%, 39%); }
-	&.crystal { color: hsl(219, 49%, 66%); }
-	&.ruby { color: hsl(2, 76%, 55%); }
-	&.sapphire { color: hsl(215, 59%, 43%); }
-	&.emerald { color: hsl(146, 100%, 33%); }
-	&.fireRed { color: hsl(18, 77%, 54%); }
-	&.leafGreen { color: hsl(84, 54%, 56%); }
+	@each $game in $games {
+		&.#{nth($game, 1)} {
+			color: nth($game, 2);
+		}
+	}
 }
 
 /*********************************************
