@@ -9,6 +9,7 @@ import { theme } from "./theme";
 const Home = lazy(() => import("./routes/Home"));
 const Pokedex = lazy(() => import("./routes/Pokedex"));
 const Pokemon = lazy(() => import("./routes/Pokemon"));
+const Gradients = lazy(() => import("./routes/Gradients"));
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
             <Routes>
               <Route path="/">
                 <Route index element={<Home />} />
+                <Route path="gradients" element={<Gradients />} />
                 <Route path="pokedex">
                   <Route path="national">
                     <Route index element={<Pokedex />} />

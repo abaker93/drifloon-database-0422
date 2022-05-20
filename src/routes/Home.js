@@ -15,7 +15,13 @@ import Chip from "@mui/material/Chip";
 import AppsRoundedIcon from "@mui/icons-material/AppsRounded";
 import SettingsIcon from "@mui/icons-material/Settings";
 
-import { generations, typesArray, GetPokemonUpdates, url } from "../utilities";
+import {
+  generations,
+  games,
+  typesArray,
+  GetPokemonUpdates,
+  url
+} from "../utilities";
 
 export default function Home() {
   const pokemon = GetPokemonUpdates();
@@ -57,13 +63,100 @@ export default function Home() {
               </CardActionArea>
             </Card>
           </Link>
+          <Card
+            className="clickable quickLink"
+            data-type-one="bug"
+            sx={{ mt: 3 }}
+          >
+            <CardActionArea>
+              <CardContent>Sword & Shield Pokédex</CardContent>
+            </CardActionArea>
+          </Card>
+          <Card
+            className="clickable quickLink"
+            data-type-one="water"
+            sx={{ mt: 3 }}
+          >
+            <CardActionArea>
+              <CardContent>BD & SP Pokédex</CardContent>
+            </CardActionArea>
+          </Card>
+          <Card
+            className="clickable quickLink"
+            data-type-one="dark"
+            sx={{ mt: 3 }}
+          >
+            <CardActionArea>
+              <CardContent>Legends: Arceus Pokédex</CardContent>
+            </CardActionArea>
+          </Card>
+          <Card
+            className="clickable quickLink"
+            data-type-one="ice"
+            sx={{ mt: 3 }}
+          >
+            <CardActionArea>
+              <CardContent>Type Chart</CardContent>
+            </CardActionArea>
+          </Card>
+          <Card
+            className="clickable quickLink"
+            data-type-one="poison"
+            sx={{ mt: 3 }}
+          >
+            <CardActionArea>
+              <CardContent>Moves</CardContent>
+            </CardActionArea>
+          </Card>
+          <Card
+            className="clickable quickLink"
+            data-type-one="fire"
+            sx={{ mt: 3 }}
+          >
+            <CardActionArea>
+              <CardContent>Shiny Pokémon</CardContent>
+            </CardActionArea>
+          </Card>
+          <Card
+            className="clickable quickLink"
+            data-type-one="steel"
+            sx={{ mt: 3 }}
+          >
+            <CardActionArea>
+              <CardContent>Pokémon Go Pokédex</CardContent>
+            </CardActionArea>
+          </Card>
         </Box>
       </Container>
       <Container maxWidth="xl" sx={{ mt: 8 }}>
         <Box>
           <h2>Pokémon by Pokédex</h2>
           <Box>
+            <Chip
+              label="National Dex"
+              color="primary"
+              clickable
+              sx={{ mr: 1, mb: 1 }}
+            />
             {generations.map((value, index) => {
+              return (
+                <Chip
+                  key={index}
+                  label={value}
+                  color="primary"
+                  clickable
+                  sx={{ mr: 1, mb: 1 }}
+                />
+              );
+            })}
+          </Box>
+        </Box>
+      </Container>
+      <Container maxWidth="xl" sx={{ mt: 8 }}>
+        <Box>
+          <h2>Pokémon by Game</h2>
+          <Box>
+            {games.map((value, index) => {
               return (
                 <Chip
                   key={index}
@@ -149,18 +242,25 @@ export default function Home() {
           </Stack>
         </Box>
       </Container>
-      <Container maxWidth="xl" sx={{ mt: 8 }}>
-        <Box>
-          <h2>Get in Touch!</h2>
-          <p>Anna Baker</p>
-          <p>Designer | Developer | Database Creator</p>
-          <p>
-            <a href="http://annabaker.design" target="_blank" rel="noreferrer">
-              annabaker.design
-            </a>
-          </p>
-        </Box>
-      </Container>
+      <footer>
+        <Container maxWidth="xl" sx={{ mt: 8 }}>
+          <Box>
+            <h2>Get in Touch!</h2>
+            <p>Anna Baker</p>
+            <p>Designer | Developer | Database Creator</p>
+            <p>
+              <Link
+                href="http://annabaker.design"
+                target="_blank"
+                rel="noreferrer"
+                underline="none"
+              >
+                annabaker.design
+              </Link>
+            </p>
+          </Box>
+        </Container>
+      </footer>
     </div>
   );
 }

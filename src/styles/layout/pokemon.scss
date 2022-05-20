@@ -11,7 +11,10 @@
       
       #abilities .MuiCard-root,
       #breeding .MuiCard-root,
-      #genInfo .TabsListUnstyled-root.chipTabs .MuiChip-root { background-color: nth($type, 2); }
+      #genInfo .TabsListUnstyled-root.chipTabs .MuiChip-root {
+        background-color: nth($type, 2);
+        &:hover { background-color: nth($type, 4); }
+      }
       
       #abilities .MuiCard-root.clickable:hover,
       #breeding .MuiCard-root.clickable:hover {
@@ -21,6 +24,11 @@
           rgba(nth($type, 2), 0.2) -15px 15px,
           rgba(nth($type, 2), 0.1) -20px 20px,
           rgba(nth($type, 2), 0.05) -25px 25px;
+      }
+
+      #genInfo .moves {
+        .MuiTab-root.Mui-selected { color: nth($type, 2); }
+        .MuiTabs-indicator { background-color: nth($type, 2); }
       }
     }
   }
@@ -294,6 +302,8 @@
     }
 
     .moves {
+      .MuiTabs-root { margin: 0; }
+
       .MuiChip-root { width: 100%; }
       img { max-width: 32px; }
     
