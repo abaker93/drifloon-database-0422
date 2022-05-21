@@ -59,14 +59,15 @@ export const typesArray = [
   "water"
 ];
 
-export function GetAllPokemon() {
+export function GetAllPokemon(pokedex) {
   const [pokemon, setPokemon] = useState([]);
+  console.log(pokedex);
 
   useEffect(() => {
     setPokemon([]);
     base("nationalDex")
       .select({
-        view: "master",
+        view: pokedex,
         filterByFormula: 'AND(altCheck = "", hideFromPokedex = FALSE())'
       })
       .eachPage((records, fetchNextPage) => {

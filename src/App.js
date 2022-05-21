@@ -22,7 +22,7 @@ export default function App() {
                 <Route index element={<Home />} />
                 <Route path="gradients" element={<Gradients />} />
                 <Route path="pokedex">
-                  <Route path="national">
+                  <Route path=":pokedex">
                     <Route index element={<Pokedex />} />
                     <Route path=":pokedexId">
                       <Route index element={<Pokemon />} />

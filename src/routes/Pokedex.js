@@ -22,9 +22,8 @@ import { GetAllPokemon, url, convertNational } from "../utilities";
 import SettingsDrawer from "../components/SettingsDrawer";
 
 export default function Pokedex() {
-  console.log();
   const params = useParams();
-  const pokemon = GetAllPokemon();
+  const pokemon = GetAllPokemon(params.pokedex);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const URLfilter = new URL(document.location).searchParams.get("filter");
